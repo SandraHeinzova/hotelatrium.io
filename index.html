@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rodinný Hotel Atrium v centru Pardubic nabízí 16 útulných pokojů, vlastní parkování a stylovou kavárnu. Rezervujte si svůj pobyt u nás.">
+    <title>Hotel Atrium Pardubice | Ubytování v srdci města</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="%233E2723" stroke-width="3"/><text x="50" y="70" font-family="Didot, serif" font-size="55" fill="%233E2723" text-anchor="middle" font-weight="bold">A</text></svg>'>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="logo" onclick="switchView('home')">
+                <img src="images/logo_hotel.png" alt="Hotel Atrium Logo">
+            </div>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3E2723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </div>
+
+            <div class="nav-menu">
+                <a onclick="switchView('home', 'about')" class="nav-link">O hotelu</a>
+                <a onclick="switchView('home', 'rooms')" class="nav-link">Pokoje</a>
+                <a onclick="switchView('home', 'cafe')" class="nav-link">Kavárna</a>
+                <a onclick="switchView('home', 'tips')" class="nav-link">Naše tipy</a>
+                <a onclick="switchView('home', 'contact')" class="nav-link">Kontakt</a>
+                <button type="button" title="Přejít na rezervaci ubytování" onclick="switchView('reservation')" class="btn btn-nav">Rezervovat</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="view-home" class="view-section">
+        
+        <header class="hero">
+            <div class="hero-overlay"></div>
+            <img src="images/hotel_cafe.jpg" class="hero-bg" alt="Hotelová kavárna Atrium">
+                 
+            <div class="container hero-content">
+                <h1>Váš druhý domov v historickém srdci Pardubic</h1>
+                <p class="hero-subtitle">Objevte kouzlo našeho rodinného hotelu. Čeká na vás 16 útulných pokojů, klidný dvůr a vůně čerstvě mleté kávy z naší kavárny.</p>
+                <button type="button" title="Zkontrolovat volné termíny" onclick="switchView('reservation')" class="btn">Ověřit dostupnost</button>
+            </div>
+        </header>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="split-layout">
+                    <div class="about-text">
+                        <span class="section-tag">Náš příběh</span>
+                        <h2>Vítejte u nás doma</h2>
+                        <p>Jsme rodinný hotel, kde si zakládáme na osobním přístupu a hřejivé atmosféře. Děláme maximum pro to, abyste se u nás cítili jako v bavlnce.</p>
+                        <p>Ať už cestujete za obchodem, nebo s rodinou, u nás najdete ten správný prostor pro odpočinek. K dispozici máme 16 pečlivě zařízených pokojů – od praktického jednolůžka přes komfortní dvoulůžkové pokoje (ve druhém patře i s klimatizací) až po prostorné apartmány, kam se pohodlně vejdou až tři dospělí.</p>
+                        <button type="button" onclick="switchView('home', 'rooms')" class="btn-outline">Více o hotelu</button>
+                    </div>
+                    <div class="about-img">
+                        <img src="images/hotel_cafe02.jpg" alt="Jiný pohled na kavárnu">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="rooms" class="container"> 
+            <div class="features">
+                <div class="features-grid">
+                    <div class="features-text">
+                        <span class="section-tag">Proč k nám</span>
+                        <h2>Bezpečí a pohodlí</h2>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+                                </div>
+                                <div>
+                                    <h3>Parkování ve dvoře</h3>
+                                    <p>Své auto můžete bezpečně zaparkovat přímo v našem uzavřeném hotelovém dvoře. Místa nabízíme zdarma do naplnění kapacity (rezervace předem bohužel aktuálně není možná).</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                                </div>
+                                <div>
+                                    <h3>Komfort a absolutní klid</h3>
+                                    <p>Kvalitní matrace zaručí dokonalý spánek po náročném dni. Pro horké letní měsíce navíc nabízíme i pokoje vybavené klimatizací.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </div>
+                                <div>
+                                    <h3>Vše na dosah ruky</h3>
+                                    <p>Nacházíme se jen pár kroků od Pernštýnského náměstí, historických památek i těch nejlepších restaurací ve městě.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="features-img">
+                        <img src="images/hotel_parking.jpg" alt="Parkování ve dvoře">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="cafe" class="cafe-section">
+            <div class="container">
+                <div class="split-layout">
+                    <div class="about-img">
+                        <img src="images/hotel_cafe03.jpg" alt="Kavárna Atrium" class="cafe-img-shadow">
+                    </div>
+                    <div class="about-text">
+                        <span class="section-tag">Gastronomie</span>
+                        <h2>Kavárna Atrium: Srdce našeho hotelu</h2>
+                        <p>Ráno dělá den. U nás ho začnete bohatou kontinentální snídaní s vůní čerstvě mleté kávy. Naše kavárna je vám ale otevřena i odpoledne – je to ideální místo, kde můžete s šálkem výběrové kávy vyřídit e-maily, nebo si jen tak v klidu číst.</p>
+                        <ul class="cafe-features-list">
+                            <li class="cafe-list-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A67C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Bohaté snídaně v ceně pobytu</li>
+                            <li class="cafe-list-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A67C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Výběrová, čerstvě mletá káva</li>
+                            <li class="cafe-list-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A67C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Klidná oáza uprostřed města</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="tips-section">
+            <div class="container">
+                <div class="tips-header-container">
+                    <span class="section-tag">Kam vyrazit</span>
+                    <h2>To nejlepší z Pardubic a okolí</h2>
+                    <p class="tips-subtitle">Pardubice nejsou jen perník. Objevte skvělou gastronomii a historické skvosty jen pár minut chůze od hotelu.</p>
+                </div>
+
+                <h3 class="tips-category-title">Kam na večeři</h3>
+                <div class="tips-grid">
+                    <a href="https://www.nejendvorek.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
+                        <div class="tip-card">
+                            <img src="images/nejen_dvorek.jpeg" alt="Nejen Dvorek" class="tip-img">
+                            <div class="tip-content">
+                                <span class="tip-meta">5 min chůze • Moderní</span>
+                                <h4>Nejen Dvorek</h4>
+                                <p>Moderní bistro s úžasnou atmosférou a zahrádkou ve vnitrobloku. Zaměřují se na sezónní suroviny a netradiční kombinace chutí.</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.plzenkapardubice.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
+                        <div class="tip-card">
+                            <img src="images/plzenka.jpeg" alt="Plzeňka - české jídlo" class="tip-img">
+                            <div class="tip-content">
+                                <span class="tip-meta">2 min chůze • Česká kuchyně</span>
+                                <h4>Plzeňka</h4>
+                                <p>Poctivá česká klasika a tanková Plzeň. Pokud máte chuť na výbornou svíčkovou, guláš nebo konfitovanou kachnu, tady nešlápnete vedle.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.stpatrick.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
+                        <div class="tip-card">
+                            <img src="images/st_patricks.jpeg" alt="Burger v St. Patrick Irish Pub" class="tip-img">                     
+                            <div class="tip-content">                            
+                                <span class="tip-meta">10 min chůze • Irská</span>
+                                <h4>St. Patrick Irish Pub</h4>
+                                <p>Kousek Irska v Pardubicích. Skvělé burgery, grilovaná žebra a samozřejmě čepovaný Guinness. Ideální místo pro uvolněný večer.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h3 class="tips-category-title">Co musíte vidět</h3>
+                <div class="tips-grid">
+                    <a href="https://www.vcm.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
+                        <div class="tip-card">
+                            <img src="images/zamek.jpeg" alt="Zámek" class="tip-img">             
+                            <div class="tip-content">
+                                <span class="tip-meta">5 min chůze • Historie</span>
+                                <h4>Zámek Pardubice</h4>
+                                <p>Renesanční zámek s unikátními hradbami a pávy volně se procházejícími po nádvoří. Uvnitř najdete Východočeské muzeum.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.zelenabrana.eu/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
+                        <div class="tip-card">
+                            <img src="images/zelena_brana.jpeg" alt="Zelená brána" class="tip-img">
+                            <div class="tip-content">
+                                <span class="tip-meta">3 min chůze • Vyhlídka</span>
+                                <h4>Zelená brána</h4>
+                                <p>Dominanta města. Vystoupejte na věž a užijte si výhled na celé historické centrum a Pernštýnské náměstí.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://hrad-kunetickahora.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
+                        <div class="tip-card">
+                            <img src="images/kuneticka_hora.jpeg" alt="Kunětická hora" class="tip-img">
+                            <div class="tip-content">
+                                <span class="tip-meta">15 min autem • Výlet</span>
+                                <h4>Hrad Kunětická hora</h4>
+                                <p>Kultovní hrad na kopci nedaleko města, známý ze seriálu Arabela. Skvělý tip na odpolední výlet.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="events-section">
+            <div class="container events-header">
+                <span class="section-tag">Kultura & Sport</span>
+                <h2>To nejlepší z kalendáře</h2>
+                <p>Pardubice žijí celý rok. Vybrali jsme pro vás akce, které stojí za to zažít.</p>
+            </div>
+
+            <div class="carousel-wrapper">
+                <button type="button" title="Posunout na předchozí akci" class="slider-btn prev" onclick="scrollEvents(-1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+
+                <div class="carousel-track" id="eventsTrack">
+                    
+                <a href="https://zavodistepardubice.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    <div class="event-card-item">
+                        <img src="images/velka_pardubicka.jpeg" class="event-img" alt="Velká Pardubická">
+                        <div class="event-body">
+                            <span class="event-date-tag">Říjen</span>
+                            <h3 class="event-title">Velká pardubická</h3>
+                            <p>Nejstarší a nejtěžší dostih v kontinentální Evropě. Společenský vrchol sezóny.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.zlataprilba.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    <div class="event-card-item">
+                        <img src="images/zlata_prilba.jpeg" class="event-img" alt="Plochá dráha">
+                        <div class="event-body">
+                            <span class="event-date-tag">Září / Říjen</span>
+                            <h3 class="event-title">Zlatá přilba</h3>
+                            <p>Nejstarší plochodrážní závod na světě. Adrenalin, vůně metylu a bouřlivá atmosféra.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://aviatickapout.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    <div class="event-card-item">
+                        <img src="images/aviaticka_pout.jpeg" class="event-img" alt="Aviatická pouť">
+                        <div class="event-body">
+                            <span class="event-date-tag">Červen</span>
+                            <h3 class="event-title">Aviatická pouť</h3>
+                            <p>Unikátní letecká show na pardubickém letišti. Historická letadla i moderní stíhačky.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.hcdynamo.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    <div class="event-card-item">
+                        <img src="images/ice_hockey.jpeg" class="event-img" alt="HC Dynamo">
+                        <div class="event-body">
+                            <span class="event-date-tag">Září – Duben</span>
+                            <h3 class="event-title">HC Dynamo Pardubice</h3>
+                            <p>Zažijte atmosféru v enteria areně. Jsme hokejové město!</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.folklornifestival.cz/cs/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    <div class="event-card-item">
+                        <img src="images/perstynska.jpeg" class="event-img" alt="Pernštýnská noc">
+                        <div class="event-body">
+                            <span class="event-date-tag">Červen</span>
+                            <h3 class="event-title">Pernštýnská noc</h3>
+                            <p>Městské slavnosti plné hudby, trhů, řemesel a ohňostrojů v historickém centru.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.vcd.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    <div class="event-card-item">
+                        <img src="images/divadlo.jpeg" class="event-img" alt="Východočeské divadlo">
+                        <div class="event-body">
+                            <span class="event-date-tag">Celoročně</span>
+                            <h3 class="event-title">Východočeské divadlo</h3>
+                            <p>Nádherná secesní budova a bohatý program od činohry po muzikály.</p>
+                        </div>
+                    </div>
+                </a>
+
+                </div>
+
+                <button type="button" title="Posunout na další akci" class="slider-btn next" onclick="scrollEvents(1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+            
+            <div class="events-footer-action">
+                <a href="https://pardubice.eu/kalendar-akci" target="_blank" rel="noopener noreferrer" class="btn">Zobrazit kalendář města</a>
+            </div>
+        </section>
+    </div>
+
+    <div id="view-reservation" class="view-section hidden">
+        <header class="page-header">
+            <img src="https://images.weserv.nl/?url=www.hotelatrium.cz/images/b/DSC_9529.jpg" class="page-header-bg" alt="Hotel Atrium">
+            
+            <div class="container page-header-content">
+                <h1>Rezervace ubytování</h1>
+                <p>Těšíme se na Vaši návštěvu v srdci Pardubic</p>
+            </div>
+        </header>
+
+        <section class="booking-section">
+            <div class="container">
+                <div class="booking-grid">
+                    <div class="booking-form">
+                        <form action="#" method="POST" onsubmit="alert('Děkujeme! Poptávka byla odeslána.'); return false;">
+                            <h3 class="form-section-title">Termín pobytu</h3>
+                            <div class="form-row">
+                                <div class="form-group"><label for="checkin">Datum příjezdu</label><input type="date" id="checkin" class="form-control" required></div>
+                                <div class="form-group"><label for="checkout">Datum odjezdu</label><input type="date" id="checkout" class="form-control" required></div>
+                            </div>
+                            <div id="nights-display"></div>
+                            <div class="form-group">
+                                <label>Výběr pokojů (zadejte počet)</label>
+                                <div class="room-selection-container">
+                                    <div class="room-selection-container">
+                                        <div class="room-selection-item" id="room-single">
+                                            <div><span class="room-label">Jednolůžkový pokoj:</span><span class="room-price-tag"></span></div>
+                                            <input type="number" min="0" value="0" aria-label="Počet jednolůžkových pokojů" title="Počet jednolůžkových pokojů" class="form-control room-input room-qty">
+                                        </div>
+                                        
+                                        <div class="room-selection-item" id="room-double">
+                                            <div><span class="room-label">Dvoulůžkový pokoj:</span><span class="room-price-tag"></span></div>
+                                            <input type="number" min="0" value="0" aria-label="Počet dvoulůžkových pokojů" title="Počet dvoulůžkových pokojů" class="form-control room-input room-qty">
+                                        </div>
+
+                                        <div class="room-selection-item" id="room-double-ac">
+                                            <div><span class="room-label">Dvoulůžkový pokoj s klimatizací:</span><span class="room-price-tag"></span></div>
+                                            <input type="number" min="0" value="0" aria-label="Počet dvoulůžkových pokojů s klimatizací" title="Počet dvoulůžkových pokojů s klimatizací" class="form-control room-input room-qty">
+                                        </div>
+                                        
+                                        <div class="room-selection-item" id="room-apt-1">
+                                            <div><span class="room-label">Apartmá (1 os.):</span><span class="room-price-tag"></span></div>
+                                            <input type="number" min="0" value="0" aria-label="Počet apartmá pro 1 osobu" title="Počet apartmá pro 1 osobu" class="form-control room-input room-qty">
+                                        </div>
+                                        
+                                        <div class="room-selection-item" id="room-apt-2">
+                                            <div><span class="room-label">Apartmá (2 os.):</span><span class="room-price-tag"></span></div>
+                                            <input type="number" min="0" value="0" aria-label="Počet apartmá pro 2 osoby" title="Počet apartmá pro 2 osoby" class="form-control room-input room-qty">
+                                        </div>
+                                        
+                                        <div class="room-selection-item" id="room-apt-3">
+                                            <div><span class="room-label">Apartmá (3 os.):</span><span class="room-price-tag"></span></div>
+                                            <input type="number" min="0" value="0" aria-label="Počet apartmá pro 3 osoby" title="Počet apartmá pro 3 osoby" class="form-control room-input room-qty">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="total-price-display"></div>
+                            <h3 class="form-section-title contact-title-mt">Kontaktní údaje</h3>
+                            <div class="form-row">
+                                <div class="form-group"><label for="company">Firma (nepovinné)</label><input type="text" id="company" class="form-control" placeholder="Název firmy"></div>
+                                <div class="form-group"><label for="ico">IČO (nepovinné)</label><input type="text" id="ico" class="form-control" placeholder="12345678"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label for="name">Jméno a příjmení</label><input type="text" id="name" class="form-control" placeholder="Jan Novák" required></div>
+                                <div class="form-group"><label for="phone">Telefon</label><input type="tel" id="phone" class="form-control" placeholder="+420 123 456 789"></div>
+                            </div>
+                            <div class="form-group"><label for="email">E-mail</label><input type="email" id="email" class="form-control" placeholder="jan.novak@email.cz" required></div>
+                            <div class="form-group"><label for="note">Poznámka / Speciální přání</label><textarea id="note" class="form-control" placeholder="Potřebujete dětskou postýlku, rádi byste balkón nebo máte dietní omezení? Napište nám."></textarea></div>
+                            <button type="submit" title="Odeslat rezervační formulář" class="btn btn-submit-form">Odeslat nezávaznou poptávku</button>
+                            <p class="form-consent-text">Odesláním formuláře souhlasíte se zpracováním osobních údajů.</p>
+                        </form>
+                    </div>
+
+                    <aside class="booking-sidebar">
+                        <h3 class="sidebar-title">Potřebujete poradit?</h3>
+                        <p class="sidebar-intro">Pokud máte speciální dotaz nebo preferujete telefonickou rezervaci, jsme tu pro vás.</p>
+                        <ul class="contact-info">
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A67C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <strong>+420 601 595 885</strong></li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A67C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> info@hotelatrium.cz</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A67C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Recepce: 8:00 – 20:00</li>
+                        </ul>
+                        <div class="sidebar-divider"></div>
+                        <h4 class="sidebar-subheading">Check-in / Check-out</h4>
+                        <p class="sidebar-info-text mb-5">Příjezd: od 14:00</p>
+                        <p class="sidebar-info-text">Odjezd: do 11:00</p>
+                        <img src="https://images.weserv.nl/?url=www.hotelatrium.cz/images/b/DSC_9612.jpg" alt="Recepce" class="sidebar-img">
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div>
+                    <div class="logo footer-logo" onclick="switchView('home')">
+                         <img src="https://images.weserv.nl/?url=www.hotelatrium.cz/assets/logo_hotel.png" alt="Hotel Atrium">
+                    </div>
+                    <p class="footer-motto">Váš druhý domov v Pardubicích.<br>Rodinný hotel s tradicí a srdcem.</p>
+                </div>
+                
+                <div>
+                    <h4>Kontakt</h4>
+                    
+                    <div class="contact-row">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Smilova 343<br>530 02 Pardubice</span>
+                    </div>
+
+                    <a href="tel:+420601595885" class="contact-row">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>+420 601 595 885</span>
+                    </a>
+
+                    <a href="mailto:info@hotelatrium.cz" class="contact-row">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span>info@hotelatrium.cz</span>
+                    </a>
+                </div>
+
+                <div class="footer-map-container">
+                    <iframe src="https://www.google.com/maps?q=Smilova+343,+530+02+Pardubice&output=embed" title="Mapa s polohou Hotelu Atrium" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+            </div>
+            
+            <div class="bottom-bar">
+                © 2026 Hotel Atrium Pardubice. Všechna práva vyhrazena.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

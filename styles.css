@@ -1,0 +1,794 @@
+/* =========================================
+   1. PROMĚNNÉ A ZÁKLADNÍ NASTAVENÍ (ROOT)
+   ========================================= */
+:root {
+    --color-primary: #3E2723;   /* Espresso */
+    --color-accent: #A67C00;    /* Zlatavá */
+    --color-bg-light: #FFFCF5;  /* Krémová */
+    --color-bg-white: #FFFFFF;
+    --color-text-main: #2C2C2C;
+    --color-text-light: #666666;
+    --color-border: #e0e0e0;
+    
+    --spacing-section: 100px;
+    --container-width: 1140px;
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--color-text-main);
+    background-color: var(--color-bg-light);
+    margin: 0;
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+/* Vynucení klasické šipky pro všechny klikací prvky na webu */
+a, button, .btn, .btn-outline, .logo, .nav-link, .hamburger, .slider-btn, .room-input {
+    cursor: default !important;
+}
+
+/* =========================================
+   2. GLOBÁLNÍ KOMPONENTY (Tlačítka, layouty)
+   ========================================= */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.section-tag {
+    color: var(--color-accent);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.mb-5 { margin-bottom: 5px; }
+
+/* Animace a přepínání pohledů */
+.view-section {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.hidden { display: none !important; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Tlačítka */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    border: none;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #8a6600;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(166, 124, 0, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-outline:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+/* =========================================
+   3. NAVIGACE (Header)
+   ========================================= */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.98);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+}
+
+.logo img {
+    height: 75px;
+    width: auto;
+    filter: brightness(0) saturate(100%) invert(13%) sepia(19%) saturate(3029%) hue-rotate(328deg) brightness(93%) contrast(92%);
+    transition: filter 0.3s ease;
+}
+
+.logo:hover img { opacity: 0.8; }
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.nav-link:hover { color: var(--color-accent); }
+
+.btn-nav { width: auto; }
+
+.hamburger {
+    display: none;
+    z-index: 1001;
+    padding: 5px;
+}
+
+/* =========================================
+   4. HLAVNÍ BANNERY (Hero & Page Header)
+   ========================================= */
+.hero {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    background-color: var(--color-primary);
+}
+
+.hero-bg, .page-header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(62, 39, 35, 0.3); 
+    z-index: 1;
+}
+
+.hero-content, .page-header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+}
+
+.page-header {
+    position: relative;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.page-header-bg { opacity: 0.4; }
+
+.page-header h1 { 
+    color: white; 
+    font-size: 3rem; 
+    margin-bottom: 10px; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.page-header p { 
+    font-size: 1.2rem; 
+    opacity: 0.9; 
+    font-weight: 300; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* =========================================
+   5. SEKCE O HOTELU
+   ========================================= */
+.about-section { padding: var(--spacing-section) 0; }
+.about-text h2 { font-size: 2.5rem; margin-bottom: 25px; }
+.about-img img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 20px 20px 0 var(--color-primary);
+}
+
+/* =========================================
+   6. SEKCE VÝHODY POKOJŮ (Proč k nám)
+   ========================================= */
+.features {
+    padding: 80px 0;
+    background: white;
+    position: relative;
+    margin-top: -50px;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 10;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 0 40px;
+    align-items: center;
+}
+
+.features-text .section-tag { margin-bottom: 10px; }
+.features-text h2 { margin-bottom: 30px; }
+.features-list { display: grid; gap: 30px; }
+.feature-item { display: flex; gap: 20px; text-align: left; }
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-bg-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-accent);
+}
+
+.icon-circle svg { width: 24px; height: 24px; }
+.features-img img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 15px 15px 0 var(--color-bg-light);
+}
+
+/* =========================================
+   7. SEKCE KAVÁRNA
+   ========================================= */
+.cafe-section {
+    background-color: #F8F5F0;
+    padding: var(--spacing-section) 0;
+}
+
+.cafe-img-shadow { box-shadow: -20px 20px 0 var(--color-accent); }
+.cafe-features-list { list-style: none; padding: 0; margin-bottom: 25px; }
+.cafe-list-item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================================
+   8. SEKCE TIPY NA VÝLETY (Karty)
+   ========================================= */
+.tips-section {
+    padding: var(--spacing-section) 0;
+    background-color: var(--color-bg-white);
+}
+
+.tips-header-container { text-align: center; margin-bottom: 50px; }
+.tips-subtitle { max-width: 600px; margin: 0 auto; }
+
+#tips .section-tag { font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 20px; }
+#tips h2 { font-size: 2.5rem; line-height: 1.2; }
+
+.tips-category-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--color-bg-light);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.tip-card-link {
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+    height: 100%; 
+}
+
+.tip-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tip-card-link:hover .tip-card {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.tip-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 3px solid var(--color-accent);
+}
+
+.tip-content { padding: 25px; flex-grow: 1; }
+.tip-content h4 { margin: 0 0 10px 0; font-size: 1.2rem; color: var(--color-primary); }
+.tip-meta {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+}
+.tip-content p { font-size: 0.95rem; margin-bottom: 0; color: var(--color-text-light); }
+
+/* =========================================
+   9. SEKCE AKCE A UDÁLOSTI (Carousel)
+   ========================================= */
+.events-section {
+    background-color: #F9F6F0; 
+    padding: var(--spacing-section) 0;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--color-border);
+}
+
+.events-header { text-align: center; margin-bottom: 50px; }
+.events-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
+
+.carousel-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 20px; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none;  
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none; 
+}
+
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.event-card-link {
+    text-decoration: none; 
+    color: inherit; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: stretch; 
+}
+
+.event-card-item {
+    min-width: 350px; 
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;               
+}
+
+.event-card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.event-img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 3px solid var(--color-accent);
+}
+
+.event-body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.event-date-tag {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-accent);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.event-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin: 0 0 10px 0;
+    color: var(--color-primary);
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.slider-btn:hover { background-color: var(--color-accent); }
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
+.events-footer-action { text-align: center; margin-top: 40px; }
+
+/* =========================================
+   10. REZERVACE A FORMULÁŘ
+   ========================================= */
+.booking-section { padding: var(--spacing-section) 0; }
+.booking-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 50px; }
+
+.booking-form {
+    background: var(--color-bg-white);
+    padding: 50px;
+    border-radius: 4px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.form-section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-primary);
+}
+
+.contact-title-mt { margin-top: 10px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 25px; }
+.form-group { margin-bottom: 25px; }
+
+.form-group label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px 18px;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-text-main);
+    transition: border-color 0.3s;
+    background-color: var(--color-bg-light); 
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(166, 124, 0, 0.1);
+}
+
+textarea.form-control { resize: vertical; min-height: 120px; }
+
+.room-selection-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.room-selection-item:last-child { border-bottom: none; }
+.room-label { font-weight: 600; color: var(--color-primary); }
+.room-price-tag { font-size: 0.9rem; color: var(--color-text-light); margin-left: 5px; }
+.room-input { width: 80px; text-align: center; }
+
+#nights-display {
+    margin-top: -15px; 
+    margin-bottom: 20px; 
+    font-weight: 700; 
+    color: var(--color-accent); 
+    min-height: 24px; 
+    font-size: 1.1rem;
+}
+
+#total-price-display {
+    margin-top: 10px; 
+    margin-bottom: 40px; 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.6rem; 
+    color: var(--color-primary); 
+    font-weight: 700; 
+    border-top: 1px dashed var(--color-border); 
+    padding-top: 20px;
+}
+
+.btn-submit-form { 
+    margin: 20px auto 0 auto; 
+    display: block; 
+    width: 100%; 
+    max-width: 500px; 
+}
+
+.form-consent-text { 
+    font-size: 0.9rem; 
+    color: #999; 
+    margin-top: 15px; 
+    text-align: center; 
+}
+
+/* --- Sidebar formuláře --- */
+.booking-sidebar {
+    background: var(--color-primary);
+    color: white;
+    padding: 40px;
+    border-radius: 4px;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+    box-shadow: 0 10px 30px rgba(62, 39, 35, 0.2);
+}
+
+.sidebar-title { color: white; margin-bottom: 20px; font-size: 1.5rem; }
+.sidebar-intro { margin-bottom: 20px; opacity: 0.9; }
+
+.contact-info { list-style: none; padding: 0; margin-bottom: 30px; }
+.contact-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.sidebar-divider { border-top: 1px solid rgba(255,255,255,0.2); margin: 20px 0; }
+.sidebar-subheading { color: white; margin-bottom: 10px; }
+.sidebar-info-text { font-size: 0.95rem; }
+
+.sidebar-img {
+    width: 100%;
+    border-radius: 2px;
+    margin-top: 20px;
+    opacity: 0.9;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* =========================================
+   11. PATIČKA (Footer)
+   ========================================= */
+footer {
+    background-color: var(--color-primary);
+    color: rgba(255,255,255,0.8);
+    padding: 60px 0 20px;
+    margin-top: auto;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+    align-items: start;
+    text-align: left;
+}
+
+.footer-logo img {
+    height: 55px; 
+    filter: brightness(0) invert(1);
+    margin-bottom: 20px;
+    display: block;
+    margin-left: 55px;
+}
+
+.footer-motto { margin: 0; }
+footer h4 { margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; color: white; }
+
+.contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-row:hover { color: var(--color-accent); }
+.contact-row svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.footer-map-container {
+    height: 200px;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(0.2); 
+    pointer-events: none;
+}
+
+.bottom-bar {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+/* =========================================
+   12. MOBILNÍ ZOBRAZENÍ (Responzivita)
+   ========================================= */
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+    
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        text-align: center;
+        gap: 20px;
+        border-top: 1px solid #eee;
+    }
+    
+    .nav-menu.active { display: flex; }
+    .nav-link { display: block; padding: 10px; width: 100%; }
+    
+    .split-layout, .features-grid, .booking-grid, .form-row, .tips-grid, .events-grid { 
+        grid-template-columns: 1fr; 
+        gap: 40px;
+    }
+
+    .hero-content h1 { font-size: 2.2rem; }
+    .about-text h2, .page-header h1 { font-size: 2rem; }
+    #tips h2, .events-intro h2, .events-header h2 { font-size: 2rem; }
+
+    .container { padding: 0 25px; }
+    .booking-form { padding: 30px 20px; }
+    
+    .room-selection-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .room-input { width: 100%; text-align: left; padding-left: 15px; }
+    
+    .event-card-item { min-width: 280px; }
+    .slider-btn { display: none; }
+    
+    .sidebar-img { display: none; }
+}
