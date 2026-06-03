@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="styles.css">
 
     <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="%233E2723" stroke-width="3"/><text x="50" y="70" font-family="Didot, serif" font-size="55" fill="%233E2723" text-anchor="middle" font-weight="bold">A</text></svg>'>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">    
+
 </head>
 <body>
     <nav class="navbar">
@@ -38,7 +38,13 @@
         
         <header class="hero">
             <div class="hero-overlay"></div>
-            <img src="images/hotel_cafe.jpg" class="hero-bg" alt="Hotelová kavárna Atrium">
+            <picture>
+                <source type="image/webp" media="(max-width: 768px)" srcset="images/hotel_cafe-mobile.webp">
+                
+                <source type="image/webp" srcset="images/hotel_cafe.webp">
+                
+                <img src="images/hotel_cafe.jpg" class="hero-bg" alt="Hotelová kavárna Atrium">
+            </picture>
                  
             <div class="container hero-content">
                 <h1>Váš druhý domov v historickém srdci Pardubic</h1>
@@ -58,7 +64,11 @@
                         <button type="button" onclick="switchView('home', 'rooms')" class="btn-outline">Více o hotelu</button>
                     </div>
                     <div class="about-img">
-                        <img src="images/hotel_cafe02.jpg" alt="Jiný pohled na kavárnu">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/hotel_cafe02.webp">
+                        
+                            <img src="images/hotel_cafe02.jpg" alt="Jiný pohled na kavárnu">
+                    </picture>
                     </div>
                 </div>
             </div>
@@ -102,7 +112,11 @@
                         </div>
                     </div>
                     <div class="features-img">
-                        <img src="images/hotel_parking.jpg" alt="Parkování ve dvoře">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/hotel_parking.webp">
+                        
+                            <img src="images/hotel_parking.jpg" alt="Parkování ve dvoře">
+                        </picture>
                     </div>
                 </div>
             </div>
@@ -112,7 +126,12 @@
             <div class="container">
                 <div class="split-layout">
                     <div class="about-img">
-                        <img src="images/hotel_cafe03.jpg" alt="Kavárna Atrium" class="cafe-img-shadow">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/hotel_cafe03.webp">
+                        
+                            <img src="images/hotel_cafe03.jpg" alt="Kavárna Atrium" class="cafe-img-shadow">
+                        </picture>
+
                     </div>
                     <div class="about-text">
                         <span class="section-tag">Gastronomie</span>
@@ -140,7 +159,12 @@
                 <div class="tips-grid">
                     <a href="https://www.nejendvorek.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
                         <div class="tip-card">
-                            <img src="images/nejen_dvorek.jpeg" alt="Nejen Dvorek" class="tip-img">
+                            <picture>                        
+                                <source type="image/webp" srcset="images/nejen_dvorek.webp">
+                            
+                                <img src="images/nejen_dvorek.jpeg" alt="Nejen Dvorek" class="tip-img">
+                            </picture>
+
                             <div class="tip-content">
                                 <span class="tip-meta">5 min chůze • Moderní</span>
                                 <h4>Nejen Dvorek</h4>
@@ -151,9 +175,14 @@
                     
                     <a href="https://www.plzenkapardubice.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
                         <div class="tip-card">
-                            <img src="images/plzenka.jpeg" alt="Plzeňka - české jídlo" class="tip-img">
+                            <picture>                        
+                                <source type="image/webp" srcset="images/plzenka.webp">
+                            
+                                <img src="images/plzenka.jpeg" alt="Plzeňka - české jídlo" class="tip-img">
+                            </picture>
+                            
                             <div class="tip-content">
-                                <span class="tip-meta">2 min chůze • Česká kuchyně</span>
+                                <span class="tip-meta">1 min chůze • Česká kuchyně</span>
                                 <h4>Plzeňka</h4>
                                 <p>Poctivá česká klasika a tanková Plzeň. Pokud máte chuť na výbornou svíčkovou, guláš nebo konfitovanou kachnu, tady nešlápnete vedle.</p>
                             </div>
@@ -162,7 +191,12 @@
 
                     <a href="https://www.stpatrick.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
                         <div class="tip-card">
-                            <img src="images/st_patricks.jpeg" alt="Burger v St. Patrick Irish Pub" class="tip-img">                     
+                            <picture>                        
+                                <source type="image/webp" srcset="images/st_patricks.webp">
+                            
+                                <img src="images/st_patricks.jpeg" alt="Burger v St. Patrick Irish Pub" class="tip-img">                     
+                            </picture>
+                            
                             <div class="tip-content">                            
                                 <span class="tip-meta">10 min chůze • Irská</span>
                                 <h4>St. Patrick Irish Pub</h4>
@@ -175,7 +209,12 @@
                 <div class="tips-grid">
                     <a href="https://www.vcm.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
                         <div class="tip-card">
-                            <img src="images/zamek.jpeg" alt="Zámek" class="tip-img">             
+                            <picture>                        
+                                <source type="image/webp" srcset="images/zamek.webp">
+                            
+                                <img src="images/zamek.jpeg" alt="Zámek" class="tip-img">                                  
+                            </picture>
+
                             <div class="tip-content">
                                 <span class="tip-meta">5 min chůze • Historie</span>
                                 <h4>Zámek Pardubice</h4>
@@ -186,7 +225,12 @@
 
                     <a href="https://www.zelenabrana.eu/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
                         <div class="tip-card">
-                            <img src="images/zelena_brana.jpeg" alt="Zelená brána" class="tip-img">
+                            <picture>                        
+                                <source type="image/webp" srcset="images/zelena_brana.webp">
+                            
+                                <img src="images/zelena_brana.jpeg" alt="Zelená brána" class="tip-img">
+                            </picture>
+
                             <div class="tip-content">
                                 <span class="tip-meta">3 min chůze • Vyhlídka</span>
                                 <h4>Zelená brána</h4>
@@ -197,7 +241,12 @@
 
                     <a href="https://hrad-kunetickahora.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
                         <div class="tip-card">
-                            <img src="images/kuneticka_hora.jpeg" alt="Kunětická hora" class="tip-img">
+                            <picture>                        
+                                <source type="image/webp" srcset="images/kuneticka_hora.webp">
+                            
+                                <img src="images/kuneticka_hora.jpeg" alt="Kunětická hora" class="tip-img">
+                            </picture>
+
                             <div class="tip-content">
                                 <span class="tip-meta">15 min autem • Výlet</span>
                                 <h4>Hrad Kunětická hora</h4>
@@ -225,7 +274,12 @@
                     
                 <a href="https://zavodistepardubice.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
                     <div class="event-card-item">
-                        <img src="images/velka_pardubicka.jpeg" class="event-img" alt="Velká Pardubická">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/velka_pardubicka.webp">
+                            
+                            <img src="images/velka_pardubicka.jpeg" class="event-img" alt="Velká Pardubická">
+                        </picture>
+
                         <div class="event-body">
                             <span class="event-date-tag">Říjen</span>
                             <h3 class="event-title">Velká pardubická</h3>
@@ -235,7 +289,11 @@
                 </a>
                 <a href="https://www.zlataprilba.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
                     <div class="event-card-item">
-                        <img src="images/zlata_prilba.jpeg" class="event-img" alt="Plochá dráha">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/zlata_prilba.webp">
+                            
+                            <img src="images/zlata_prilba.jpeg" class="event-img" alt="Plochá dráha">
+                        </picture>                        
                         <div class="event-body">
                             <span class="event-date-tag">Září / Říjen</span>
                             <h3 class="event-title">Zlatá přilba</h3>
@@ -245,7 +303,11 @@
                 </a>
                 <a href="https://aviatickapout.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
                     <div class="event-card-item">
-                        <img src="images/aviaticka_pout.jpeg" class="event-img" alt="Aviatická pouť">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/aviaticka_pout.webp">
+                            
+                            <img src="images/aviaticka_pout.jpeg" class="event-img" alt="Aviatická pouť">
+                        </picture>                         
                         <div class="event-body">
                             <span class="event-date-tag">Červen</span>
                             <h3 class="event-title">Aviatická pouť</h3>
@@ -255,7 +317,12 @@
                 </a>
                 <a href="https://www.hcdynamo.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
                     <div class="event-card-item">
-                        <img src="images/ice_hockey.jpeg" class="event-img" alt="HC Dynamo">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/ice_hockey.webp">
+                            
+                            <img src="images/ice_hockey.jpeg" class="event-img" alt="HC Dynamo">
+                        </picture>   
+
                         <div class="event-body">
                             <span class="event-date-tag">Září – Duben</span>
                             <h3 class="event-title">HC Dynamo Pardubice</h3>
@@ -265,7 +332,11 @@
                 </a>
                 <a href="https://www.folklornifestival.cz/cs/" target="_blank" rel="noopener noreferrer" class="event-card-link">
                     <div class="event-card-item">
-                        <img src="images/perstynska.jpeg" class="event-img" alt="Pernštýnská noc">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/perstynska.webp">
+                            
+                            <img src="images/perstynska.jpeg" class="event-img" alt="Pernštýnská noc">
+                        </picture>                        
                         <div class="event-body">
                             <span class="event-date-tag">Červen</span>
                             <h3 class="event-title">Pernštýnská noc</h3>
@@ -275,7 +346,11 @@
                 </a>
                 <a href="https://www.vcd.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
                     <div class="event-card-item">
-                        <img src="images/divadlo.jpeg" class="event-img" alt="Východočeské divadlo">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/divadlo.webp">
+                            
+                            <img src="images/divadlo.jpeg" class="event-img" alt="Východočeské divadlo">
+                        </picture>                           
                         <div class="event-body">
                             <span class="event-date-tag">Celoročně</span>
                             <h3 class="event-title">Východočeské divadlo</h3>
@@ -299,8 +374,11 @@
 
     <div id="view-reservation" class="view-section hidden">
         <header class="page-header">
-            <img src="https://images.weserv.nl/?url=www.hotelatrium.cz/images/b/DSC_9529.jpg" class="page-header-bg" alt="Hotel Atrium">
-            
+            <picture>
+                <source type="image/webp" media="(max-width: 768px)" srcset="images/reservation_bg_mobile.webp">
+                <source type="image/webp" srcset="images/reservation_bg.webp">
+                <img src="images/reservation_bg.jpg" class="page-header-bg" alt="Pozadí rezervace">
+            </picture>           
             <div class="container page-header-content">
                 <h1>Rezervace ubytování</h1>
                 <p>Těšíme se na Vaši návštěvu v srdci Pardubic</p>
@@ -321,39 +399,62 @@
                             <div class="form-group">
                                 <label>Výběr pokojů (zadejte počet)</label>
                                 <div class="room-selection-container">
-                                    <div class="room-selection-container">
-                                        <div class="room-selection-item" id="room-single">
-                                            <div><span class="room-label">Jednolůžkový pokoj:</span><span class="room-price-tag"></span></div>
-                                            <input type="number" min="0" value="0" aria-label="Počet jednolůžkových pokojů" title="Počet jednolůžkových pokojů" class="form-control room-input room-qty">
+                                    <div class="room-selection-item" id="room-single">
+                                        <div><span class="room-label">Jednolůžkový pokoj:</span><span class="room-price-tag"></span></div>
+                                        <div class="qty-wrapper">
+                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
+                                            <input type="number" min="0" max="16" value="0" aria-label="Počet jednolůžkových pokojů" class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
                                         </div>
-                                        
-                                        <div class="room-selection-item" id="room-double">
-                                            <div><span class="room-label">Dvoulůžkový pokoj:</span><span class="room-price-tag"></span></div>
-                                            <input type="number" min="0" value="0" aria-label="Počet dvoulůžkových pokojů" title="Počet dvoulůžkových pokojů" class="form-control room-input room-qty">
+                                    </div>
+            
+                                    <div class="room-selection-item" id="room-double">
+                                        <div><span class="room-label">Dvoulůžkový pokoj:</span><span class="room-price-tag"></span></div>
+                                        <div class="qty-wrapper">
+                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
+                                            <input type="number" min="0" max="16" value="0" aria-label="Počet dvoulůžkových pokojů" class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
                                         </div>
+                                    </div>
 
-                                        <div class="room-selection-item" id="room-double-ac">
-                                            <div><span class="room-label">Dvoulůžkový pokoj s klimatizací:</span><span class="room-price-tag"></span></div>
-                                            <input type="number" min="0" value="0" aria-label="Počet dvoulůžkových pokojů s klimatizací" title="Počet dvoulůžkových pokojů s klimatizací" class="form-control room-input room-qty">
+                                    <div class="room-selection-item" id="room-double-ac">
+                                        <div><span class="room-label">Dvoulůžkový pokoj s klimatizací:</span><span class="room-price-tag"></span></div>
+                                        <div class="qty-wrapper">
+                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
+                                            <input type="number" min="0" max="4" value="0" aria-label="Počet dvoulůžkových pokojů s klimatizací" class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
                                         </div>
+                                    </div>
                                         
-                                        <div class="room-selection-item" id="room-apt-1">
-                                            <div><span class="room-label">Apartmá (1 os.):</span><span class="room-price-tag"></span></div>
-                                            <input type="number" min="0" value="0" aria-label="Počet apartmá pro 1 osobu" title="Počet apartmá pro 1 osobu" class="form-control room-input room-qty">
+                                    <div class="room-selection-item" id="room-apt-1">
+                                        <div><span class="room-label">Apartmá (1 os.):</span><span class="room-price-tag"></span></div>
+                                        <div class="qty-wrapper">
+                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
+                                            <input type="number" min="0" max="4" value="0" aria-label="Počet apartmá pro 1 osobu" class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
                                         </div>
+                                    </div>
                                         
-                                        <div class="room-selection-item" id="room-apt-2">
-                                            <div><span class="room-label">Apartmá (2 os.):</span><span class="room-price-tag"></span></div>
-                                            <input type="number" min="0" value="0" aria-label="Počet apartmá pro 2 osoby" title="Počet apartmá pro 2 osoby" class="form-control room-input room-qty">
+                                    <div class="room-selection-item" id="room-apt-2">
+                                        <div><span class="room-label">Apartmá (2 os.):</span><span class="room-price-tag"></span></div>
+                                        <div class="qty-wrapper">
+                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
+                                            <input type="number" min="0" max="4" value="0" aria-label="Počet apartmá pro 2 osoby" class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
                                         </div>
-                                        
-                                        <div class="room-selection-item" id="room-apt-3">
-                                            <div><span class="room-label">Apartmá (3 os.):</span><span class="room-price-tag"></span></div>
-                                            <input type="number" min="0" value="0" aria-label="Počet apartmá pro 3 osoby" title="Počet apartmá pro 3 osoby" class="form-control room-input room-qty">
+                                    </div>
+                                    
+                                    <div class="room-selection-item" id="room-apt-3">
+                                        <div><span class="room-label">Apartmá (3 os.):</span><span class="room-price-tag"></span></div>
+                                        <div class="qty-wrapper">
+                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
+                                            <input type="number" min="0" max="3" value="0" aria-label="Počet apartmá pro 3 osoby" class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div id="room-capacity-warning" class="hidden"></div>
                             <div id="total-price-display"></div>
                             <h3 class="form-section-title contact-title-mt">Kontaktní údaje</h3>
                             <div class="form-row">
@@ -383,7 +484,10 @@
                         <h4 class="sidebar-subheading">Check-in / Check-out</h4>
                         <p class="sidebar-info-text mb-5">Příjezd: od 14:00</p>
                         <p class="sidebar-info-text">Odjezd: do 11:00</p>
-                        <img src="https://images.weserv.nl/?url=www.hotelatrium.cz/images/b/DSC_9612.jpg" alt="Recepce" class="sidebar-img">
+                        <picture>
+                            <source type="image/webp" srcset="images/sidebar_img.webp">
+                            <img src="images/sidebar_img.jpg" class="sidebar-img" alt="Náhled pokoje">
+                        </picture>               
                     </aside>
                 </div>
             </div>
@@ -396,7 +500,7 @@
                 
                 <div>
                     <div class="logo footer-logo" onclick="switchView('home')">
-                         <img src="https://images.weserv.nl/?url=www.hotelatrium.cz/assets/logo_hotel.png" alt="Hotel Atrium">
+                         <img src="images/logo_hotel.png" alt="Hotel Atrium">
                     </div>
                     <p class="footer-motto">Váš druhý domov v Pardubicích.<br>Rodinný hotel s tradicí a srdcem.</p>
                 </div>
