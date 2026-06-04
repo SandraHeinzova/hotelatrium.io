@@ -10,7 +10,6 @@
 
     <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="%233E2723" stroke-width="3"/><text x="50" y="70" font-family="Didot, serif" font-size="55" fill="%233E2723" text-anchor="middle" font-weight="bold">A</text></svg>'>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">    
-
 </head>
 <body>
     <nav class="navbar">
@@ -24,12 +23,12 @@
             </div>
 
             <div class="nav-menu">
-                <a onclick="switchView('home', 'about')" class="nav-link">O hotelu</a>
-                <a onclick="switchView('home', 'rooms')" class="nav-link">Pokoje</a>
-                <a onclick="switchView('home', 'cafe')" class="nav-link">Kavárna</a>
-                <a onclick="switchView('home', 'tips')" class="nav-link">Naše tipy</a>
-                <a onclick="switchView('home', 'contact')" class="nav-link">Kontakt</a>
-                <button type="button" title="Přejít na rezervaci ubytování" onclick="switchView('reservation')" class="btn btn-nav">Rezervovat</button>
+                <a href="#about" class="nav-link">O hotelu</a>
+                <a href="#rooms" class="nav-link">Pokoje</a>
+                <a href="#cafe" class="nav-link">Kavárna</a>
+                <a href="#tips" class="nav-link">Naše tipy</a>
+                <a href="#contact" class="nav-link">Kontakt</a>
+                <a href="reservation.html" class="btn btn-nav">Rezervovat</a>
             </div>
         </div>
     </nav>
@@ -39,7 +38,7 @@
         <header class="hero">
             <div class="hero-overlay"></div>
             <picture>
-                <source type="image/webp" media="(max-width: 768px)" srcset="images/hotel_cafe_mobile.webp">
+                <source type="image/webp" media="(max-width: 768px)" srcset="images/hotel_cafe-mobile.webp">
                 
                 <source type="image/webp" srcset="images/hotel_cafe.webp">
                 
@@ -49,7 +48,7 @@
             <div class="container hero-content">
                 <h1>Váš druhý domov v historickém srdci Pardubic</h1>
                 <p class="hero-subtitle">Objevte kouzlo našeho rodinného hotelu. Čeká na vás 16 útulných pokojů, klidný dvůr a vůně čerstvě mleté kávy z naší kavárny.</p>
-                <button type="button" title="Zkontrolovat volné termíny" onclick="switchView('reservation')" class="btn">Ověřit dostupnost</button>
+                <a href="reservation.html" class="btn">Ověřit dostupnost</a>
             </div>
         </header>
 
@@ -368,128 +367,6 @@
             
             <div class="events-footer-action">
                 <a href="https://pardubice.eu/kalendar-akci" target="_blank" rel="noopener noreferrer" class="btn">Zobrazit kalendář města</a>
-            </div>
-        </section>
-    </div>
-
-    <div id="view-reservation" class="view-section hidden">
-        <header class="page-header">
-            <picture>
-                <source type="image/webp" media="(max-width: 768px)" srcset="images/reservation_bg_mobile.webp">
-                <source type="image/webp" srcset="images/reservation_bg.webp">
-                <img src="images/reservation_bg.jpg" class="page-header-bg" alt="Pozadí rezervace">
-            </picture>           
-            <div class="container page-header-content">
-                <h1>Rezervace ubytování</h1>
-                <p>Těšíme se na Vaši návštěvu v srdci Pardubic</p>
-            </div>
-        </header>
-
-        <section class="booking-section">
-            <div class="container">
-                <div class="booking-grid">
-                    <div class="booking-form">
-                        <form action="#" method="POST" onsubmit="alert('Děkujeme! Poptávka byla odeslána.'); return false;">
-                            <h3 class="form-section-title">Termín pobytu</h3>
-                            <div class="form-row">
-                                <div class="form-group"><label for="checkin">Datum příjezdu</label><input type="date" id="checkin" class="form-control" required></div>
-                                <div class="form-group"><label for="checkout">Datum odjezdu</label><input type="date" id="checkout" class="form-control" required></div>
-                            </div>
-                            <div id="nights-display"></div>
-                            <div class="form-group">
-                                <label>Výběr pokojů (zadejte počet)</label>
-                                <div class="room-selection-container">
-                                    <div class="room-selection-item" id="room-single">
-                                        <div><span class="room-label">Jednolůžkový pokoj:</span><span class="room-price-tag"></span></div>
-                                        <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="16" value="0" aria-label="Počet jednolůžkových pokojů" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
-                                        </div>
-                                    </div>
-            
-                                    <div class="room-selection-item" id="room-double">
-                                        <div><span class="room-label">Dvoulůžkový pokoj:</span><span class="room-price-tag"></span></div>
-                                        <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="16" value="0" aria-label="Počet dvoulůžkových pokojů" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="room-selection-item" id="room-double-ac">
-                                        <div><span class="room-label">Dvoulůžkový pokoj s klimatizací:</span><span class="room-price-tag"></span></div>
-                                        <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="4" value="0" aria-label="Počet dvoulůžkových pokojů s klimatizací" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
-                                        </div>
-                                    </div>
-                                        
-                                    <div class="room-selection-item" id="room-apt-1">
-                                        <div><span class="room-label">Apartmá (1 os.):</span><span class="room-price-tag"></span></div>
-                                        <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="4" value="0" aria-label="Počet apartmá pro 1 osobu" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
-                                        </div>
-                                    </div>
-                                        
-                                    <div class="room-selection-item" id="room-apt-2">
-                                        <div><span class="room-label">Apartmá (2 os.):</span><span class="room-price-tag"></span></div>
-                                        <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="4" value="0" aria-label="Počet apartmá pro 2 osoby" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="room-selection-item" id="room-apt-3">
-                                        <div><span class="room-label">Apartmá (3 os.):</span><span class="room-price-tag"></span></div>
-                                        <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="3" value="0" aria-label="Počet apartmá pro 3 osoby" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="room-capacity-warning" class="hidden"></div>
-                            <div id="total-price-display"></div>
-                            <h3 class="form-section-title contact-title-mt">Kontaktní údaje</h3>
-                            <div class="form-row">
-                                <div class="form-group"><label for="company">Firma (nepovinné)</label><input type="text" id="company" class="form-control" placeholder="Název firmy"></div>
-                                <div class="form-group"><label for="ico">IČO (nepovinné)</label><input type="text" id="ico" class="form-control" placeholder="12345678"></div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group"><label for="name">Jméno a příjmení</label><input type="text" id="name" class="form-control" placeholder="Jan Novák" required></div>
-                                <div class="form-group"><label for="phone">Telefon</label><input type="tel" id="phone" class="form-control" placeholder="+420 123 456 789"></div>
-                            </div>
-                            <div class="form-group"><label for="email">E-mail</label><input type="email" id="email" class="form-control" placeholder="jan.novak@email.cz" required></div>
-                            <div class="form-group"><label for="note">Poznámka / Speciální přání</label><textarea id="note" class="form-control" placeholder="Potřebujete dětskou postýlku, rádi byste balkón nebo máte dietní omezení? Napište nám."></textarea></div>
-                            <button type="submit" title="Odeslat rezervační formulář" class="btn btn-submit-form">Odeslat nezávaznou poptávku</button>
-                            <p class="form-consent-text">Odesláním formuláře souhlasíte se zpracováním osobních údajů.</p>
-                        </form>
-                    </div>
-
-                    <aside class="booking-sidebar">
-                        <h3 class="sidebar-title">Potřebujete poradit?</h3>
-                        <p class="sidebar-intro">Pokud máte speciální dotaz nebo preferujete telefonickou rezervaci, jsme tu pro vás.</p>
-                        <ul class="contact-info">
-                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A67C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <strong>+420 601 595 885</strong></li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A67C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> info@hotelatrium.cz</li>
-                            <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A67C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Recepce: 8:00 – 20:00</li>
-                        </ul>
-                        <div class="sidebar-divider"></div>
-                        <h4 class="sidebar-subheading">Check-in / Check-out</h4>
-                        <p class="sidebar-info-text mb-5">Příjezd: od 14:00</p>
-                        <p class="sidebar-info-text">Odjezd: do 11:00</p>
-                        <picture>
-                            <source type="image/webp" srcset="images/sidebar_img.webp">
-                            <img src="images/sidebar_img.jpg" class="sidebar-img" alt="Náhled pokoje">
-                        </picture>               
-                    </aside>
-                </div>
             </div>
         </section>
     </div>
