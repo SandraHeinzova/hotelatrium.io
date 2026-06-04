@@ -1,3 +1,4 @@
+// === 1. HLAVNÍ CENÍK (Zde měňte ceny, automaticky se propíšou do webu i kalkulačky) ===
 const ROOM_PRICES = {
     'room-single': 2300,
     'room-double': 2900,
@@ -7,35 +8,11 @@ const ROOM_PRICES = {
     'room-apt-3': 3800
 };
 
+// === 2. GLOBÁLNÍ FUNKCE PRO MENU A AKCE (Dostupné pro oba HTML soubory) ===
 window.toggleMenu = function() {
     const menu = document.querySelector('.nav-menu');
-    menu.classList.toggle('active');
+    if (menu) menu.classList.toggle('active');
 }
-
-window.switchView = function(viewName, sectionId = null) {
-    const homeView = document.getElementById('view-home');
-    const reservationView = document.getElementById('view-reservation');
-    
-    document.querySelector('.nav-menu').classList.remove('active');
-
-    if (viewName === 'home') {
-        homeView.classList.remove('hidden');
-        reservationView.classList.add('hidden');
-        
-        if (sectionId) {
-            setTimeout(() => {
-                const section = document.getElementById(sectionId);
-                if (section) section.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    } else if (viewName === 'reservation') {
-        homeView.classList.add('hidden');
-        reservationView.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-};
 
 window.scrollEvents = function(direction) {
     const track = document.getElementById('eventsTrack');
@@ -58,8 +35,10 @@ window.scrollEvents = function(direction) {
     track.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
 }
 
+// === 3. LOGIKA REZERVAČNÍHO FORMULÁŘE A KALKULAČKY ===
 document.addEventListener('DOMContentLoaded', () => {
     
+    // Automatické vyplnění cen z ceníku do šablony
     for (const [roomId, price] of Object.entries(ROOM_PRICES)) {
         const roomContainer = document.getElementById(roomId);
         if (roomContainer) {
@@ -71,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Načtení prvků formuláře z HTML
     const checkinInput = document.getElementById('checkin');
     const checkoutInput = document.getElementById('checkout');
     const parkingInput = document.getElementById('parking'); 
@@ -78,17 +58,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalPriceDisplay = document.getElementById('total-price-display');
     const roomInputs = document.querySelectorAll('.room-qty'); 
 
+    // BEZPEČNOSTNÍ POJISTKA: Pokud jsme na index.html, kde formulář není, skript zde tiše skončí
+    if (!checkinInput && roomInputs.length === 0) return;
+
+    // Nastavení minimálního povoleného data v kalendáři na dnešek
     const today = new Date().toISOString().split('T')[0];
     if(checkinInput && checkoutInput) {
         checkinInput.setAttribute('min', today);
         checkoutInput.setAttribute('min', today);
     }
 
+    // --- HLAVNÍ FUNKCE PRO VÝPOČET POBYTU A KONTROLU LIMITŮ ---
     function calculateStay() {
         let roomCostPerNight = 0;
         let totalRooms = 0;
         let totalApartments = 0;
         let totalDoubleAc = 0;
+
+        // 1. Spočítáme stavy vybraných pokojů
         roomInputs.forEach(input => {
             const qty = parseInt(input.value) || 0; 
             const price = parseInt(input.dataset.price) || 0; 
@@ -99,12 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const parentRow = input.closest('.room-selection-item');
                 if (parentRow) {
-                    if (parentRow.id.startsWith('room-apt-')) {
-                        totalApartments += qty;
-                    }
-                    if (parentRow.id === 'room-double-ac') {
-                        totalDoubleAc += qty;
-                    }
+                    if (parentRow.id.startsWith('room-apt-')) totalApartments += qty;
+                    if (parentRow.id === 'room-double-ac') totalDoubleAc += qty;
                 }
             }
         });
@@ -112,12 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const warningDiv = document.getElementById('room-capacity-warning');
         const submitBtn = document.querySelector('.btn-submit-form');
 
+        // --- PREVENCE CHYBY (UX): Aktivní zamykání/odemykání tlačítek PLUS ---
         roomInputs.forEach(input => {
             const parentRow = input.closest('.room-selection-item');
             if (!parentRow) return;
 
             const isApt = parentRow.id.startsWith('room-apt-');
-            const isDoubleAc = parentRow.id === 'room-double-ac'; 
+            const isDoubleAc = parentRow.id === 'room-double-ac';
             const plusBtn = parentRow.querySelector('.qty-btn.plus');
             const currentVal = parseInt(input.value) || 0;
             const maxAttr = parseInt(input.getAttribute('max')) || 99;
@@ -126,12 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentVal >= maxAttr || totalRooms >= 16 || (isApt && totalApartments >= 4) || (isDoubleAc && totalDoubleAc >= 4)) {
                     plusBtn.disabled = true;
                     
-                    if (currentVal >= maxAttr || (isDoubleAc && totalDoubleAc >= 4)) {
-                        plusBtn.title = `Dosaženo maximum pro tento typ pokoje (${maxAttr} pokoje celkem)`;
+                    if (currentVal >= maxAttr) {
+                        plusBtn.title = "Dosaženo maximum pro tento typ pokoje";
                     } else if (totalRooms >= 16) {
                         plusBtn.title = "Dosažena maximální celková kapacita hotelu (16 pokojů)";
                     } else if (isApt && totalApartments >= 4) {
                         plusBtn.title = "Dosažena maximální kapacita apartmánů (4 apartmány celkem)";
+                    } else if (isDoubleAc && totalDoubleAc >= 4) {
+                        plusBtn.title = "Dosažena kapacita pokojů s klimatizací (max 4)";
                     }
                 } else {
                     plusBtn.disabled = false;
@@ -140,36 +126,48 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // --- UX OPTIMALIZACE: PRIORITNÍ KASKÁDA PRO JEDNU HLÁŠKU ---
+        let warningText = "";
+        let isInvalid = false;
+
         if (totalRooms > 16) {
-            warningDiv.textContent = `Překročena celková kapacita hotelu! Máme pouze 16 pokojů (vybráno ${totalRooms}).`;
-            warningDiv.classList.remove('hidden');
+            warningText = `Překročena celková kapacita hotelu! Máme pouze 16 pokojů (vybráno ${totalRooms}).`;
+            isInvalid = true;
         } else if (totalApartments > 4) {
-            warningDiv.textContent = `Překročena kapacita apartmánů! Máme pouze 4 apartmány celkem (vybráno ${totalApartments}).`;
-            warningDiv.classList.remove('hidden');
-        } else if (totalDoubleAc > 4) { // NOVÉ
-            warningDiv.textContent = `Překročena kapacita pokojů s klimatizací! Máme pouze 4 tyto pokoje celkem (vybráno ${totalDoubleAc}).`;
-            warningDiv.classList.remove('hidden');
+            warningText = `Překročena kapacita apartmánů! Máme pouze 4 apartmány celkem (vybráno ${totalApartments}).`;
+            isInvalid = true;
+        } else if (totalDoubleAc > 4) {
+            warningText = `Překročena kapacita pokojů s klimatizací! Máme pouze 4 tyto pokoje celkem (vybráno ${totalDoubleAc}).`;
+            isInvalid = true;
         } else if (totalRooms === 16) {
-            warningDiv.textContent = "Dosažena maximální celková kapacita hotelu (16 pokojů).";
-            warningDiv.classList.remove('hidden');
+            warningText = "Dosažena maximální celková kapacita hotelu (16 pokojů).";
         } else if (totalApartments === 4) {
-            warningDiv.textContent = "Dosažena maximální kapacita apartmánů (4 apartmány celkem).";
-            warningDiv.classList.remove('hidden');
-        } else if (totalDoubleAc === 4) { 
-            warningDiv.textContent = "Dosažena maximální kapacita dvoulůžkových pokojů s klimatizací (4 pokoje celkem).";
-            warningDiv.classList.remove('hidden');
-        } else {
-            warningDiv.classList.add('hidden'); 
+            warningText = "Dosažena maximální kapacita apartmánů (4 apartmány celkem).";
+        } else if (totalDoubleAc === 4) {
+            warningText = "Dosažena maximální kapacita dvoulůžkových pokojů s klimatizací (4 pokoje celkem).";
         }
 
-        if (totalRooms > 16 || totalApartments > 4 || totalDoubleAc > 4) {
+        // Vykreslení vybrané jediné hlášky na stránku
+        if (warningDiv) {
+            if (warningText) {
+                warningDiv.textContent = warningText;
+                warningDiv.classList.remove('hidden');
+            } else {
+                warningDiv.classList.add('hidden');
+            }
+        }
+
+        // Tvrdá pojistka pro odesílací tlačítko
+        if (isInvalid) {
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.style.opacity = '0.5';
                 submitBtn.style.cursor = 'not-allowed';
             }
-            nightsDisplay.textContent = '';
-            totalPriceDisplay.innerHTML = `<span style="color: #9E3D2F; font-weight:700;">Neplatný výběr (překročena kapacita hotelu).</span>`;
+            if (nightsDisplay) nightsDisplay.textContent = '';
+            if (totalPriceDisplay) {
+                totalPriceDisplay.innerHTML = `<span style="color: #9E3D2F; font-weight:700; font-size: 1.1rem;">Neplatný výběr pokojů (překročena kapacita hotelu).</span>`;
+            }
             return; 
         } else {
             if (submitBtn) {
@@ -179,29 +177,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // Zobrazení mezisoučtu, pokud chybí vyplněný kalendář
         if (!checkinInput.value || !checkoutInput.value) {
-            nightsDisplay.textContent = '';
-            
-            if (totalRooms > 0) {
-                totalPriceDisplay.innerHTML = `
-                    <span style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700;">
-                        Vybráno pokojů: ${totalRooms}
-                    </span>
-                    <br>
-                    <small style="font-size: 0.95rem; color: var(--color-text-light); font-weight: 400;">
-                        Cena za 1 noc: ${roomCostPerNight.toLocaleString('cs-CZ')} Kč.<br>
-                        (Pro výpočet celkové ceny prosím vyplňte nahoře termín pobytu)
-                    </small>
-                `;
-            } else {
-                totalPriceDisplay.innerHTML = '';
+            if (nightsDisplay) nightsDisplay.textContent = '';
+            if (totalPriceDisplay) {
+                if (totalRooms > 0) {
+                    totalPriceDisplay.innerHTML = `
+                        <span style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700;">
+                            Vybráno pokojů: ${totalRooms}
+                        </span>
+                        <br>
+                        <small style="font-size: 0.95rem; color: var(--color-text-light); font-weight: 400;">
+                            Cena za 1 noc: ${roomCostPerNight.toLocaleString('cs-CZ')} Kč.<br>
+                            (Pro výpočet celkové ceny prosím vyplňte nahoře termín pobytu)
+                        </small>
+                    `;
+                } else {
+                    totalPriceDisplay.innerHTML = '';
+                }
             }
             return; 
         }
 
+        // VÝPOČET FINÁLNÍ CENY (Máme termín i pokoje v pořádku)
         const date1 = new Date(checkinInput.value);
         const date2 = new Date(checkoutInput.value);
-        
         const diffTime = date2 - date1;
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
@@ -216,34 +216,39 @@ document.addEventListener('DOMContentLoaded', () => {
             if (diffDays === 1) nightText = 'noc';
             else if (diffDays >= 2 && diffDays <= 4) nightText = 'noci';
 
-            nightsDisplay.textContent = `Délka pobytu: ${diffDays} ${nightText}`;
-            nightsDisplay.style.color = 'var(--color-accent)'; 
+            if (nightsDisplay) {
+                nightsDisplay.textContent = `Délka pobytu: ${diffDays} ${nightText}`;
+                nightsDisplay.style.color = 'var(--color-accent)'; 
+            }
 
-            if (totalRooms > 0) {
-                const finalPrice = (diffDays * roomCostPerNight) + parkingTotal;
-                const formattedPrice = finalPrice.toLocaleString('cs-CZ');
-                
-                let detailsText = `(za ${totalRooms} pokoj(e)`;
-                if (isParking) {
-                    detailsText += ` + parkování na ${diffDays} ${nightText}`;
+            if (totalPriceDisplay) {
+                if (totalRooms > 0) {
+                    const finalPrice = (diffDays * roomCostPerNight) + parkingTotal;
+                    const formattedPrice = finalPrice.toLocaleString('cs-CZ');
+                    
+                    let detailsText = `(za ${totalRooms} pokoj(e)`;
+                    if (isParking) detailsText += ` + parkování na ${diffDays} ${nightText}`;
+                    detailsText += `)`;
+
+                    totalPriceDisplay.innerHTML = `
+                        Celková cena: <span style="font-size: 1.8rem; font-weight: 700; color: var(--color-primary);">${formattedPrice} Kč</span> 
+                        <small style="font-size: 0.9rem; font-weight: 400; display:block; margin-top:5px; color: var(--color-text-light);">${detailsText}</small>
+                    `;
+                } else {
+                    totalPriceDisplay.innerHTML = `<span style="font-size: 1rem; color: #666; font-weight: 400;">Pro zobrazení ceny zadejte počet pokojů.</span>`;
                 }
-                detailsText += `)`;
-
-                totalPriceDisplay.innerHTML = `
-                    Celková cena: <span style="font-size: 1.8rem;">${formattedPrice} Kč</span> 
-                    <small style="font-size: 0.9rem; font-weight: 400; display:block; margin-top:5px;">${detailsText}</small>
-                `;
-            } else {
-                totalPriceDisplay.innerHTML = `<span style="font-size: 1rem; color: #666; font-weight: 400;">Pro zobrazení ceny zadejte počet pokojů.</span>`;
             }
             
         } else {
-            nightsDisplay.textContent = 'Datum odjezdu mustí být později než datum příjezdu.';
-            nightsDisplay.style.color = '#d32f2f';
-            totalPriceDisplay.textContent = '';
+            if (nightsDisplay) {
+                nightsDisplay.textContent = 'Datum odjezdu musí být později než datum příjezdu.';
+                nightsDisplay.style.color = '#d32f2f';
+            }
+            if (totalPriceDisplay) totalPriceDisplay.textContent = '';
         }
     }
 
+    // --- NAVÁZÁNÍ EVENT LISTENERŮ ---
     if(checkinInput) checkinInput.addEventListener('change', calculateStay);
     if(checkoutInput) checkoutInput.addEventListener('change', calculateStay);
     if(parkingInput) parkingInput.addEventListener('change', calculateStay); 
@@ -252,44 +257,38 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('input', function() {
             let val = parseInt(this.value) || 0;
             let max = parseInt(this.getAttribute('max')) || 99;
-            
-            if (val > max) {
-                this.value = max;
-            }
-            if (val < 0) {
-                this.value = 0;
-            }
+            if (val > max) this.value = max;
+            if (val < 0) this.value = 0;
             calculateStay();
         });
     });
 
     const minusBtns = document.querySelectorAll('.qty-btn.minus');
-    const plusBtns = document.querySelectorAll('.qty-btn.plus');
-
     minusBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const input = e.target.nextElementSibling;
-            let val = parseInt(input.value) || 0;
-            const min = parseInt(input.getAttribute('min')) || 0;
-            
-            if (val > min) {
-                input.value = val - 1;
-                input.dispatchEvent(new Event('input')); 
+            if (input) {
+                let val = parseInt(input.value) || 0;
+                if (val > 0) {
+                    input.value = val - 1;
+                    input.dispatchEvent(new Event('input')); 
+                }
             }
         });
     });
 
+    const plusBtns = document.querySelectorAll('.qty-btn.plus');
     plusBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const input = e.target.previousElementSibling;
-            let val = parseInt(input.value) || 0;
-            const max = parseInt(input.getAttribute('max')) || 99;
-            
-            if (val < max) {
-                input.value = val + 1;
-                input.dispatchEvent(new Event('input')); 
+            if (input) {
+                let val = parseInt(input.value) || 0;
+                let max = parseInt(input.getAttribute('max')) || 99;
+                if (val < max) {
+                    input.value = val + 1;
+                    input.dispatchEvent(new Event('input')); 
+                }
             }
         });
     });
-
 });
