@@ -61,61 +61,102 @@
                             <div class="form-group">
                                 <label>Výběr pokojů (zadejte počet)</label>
                                 <div class="room-selection-container">
-                                    
                                     <div class="room-selection-item" id="room-single">
-                                        <div><span class="room-label">Jednolůžkový pokoj:</span><span class="room-price-tag"></span></div>
+                                        <div><span class="room-label">Jednolůžkový pokoj:</span>
+                                            x<span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" tabindex="-1" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="16" value="0" aria-label="Počet jednolůžkových pokojů" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" tabindex="-1" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="room-selection-item" id="room-double">
-                                        <div><span class="room-label">Dvoulůžkový pokoj:</span><span class="room-price-tag"></span></div>
-                                        <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" tabindex="-1" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="15" value="0" aria-label="Počet dvoulůžkových pokojů" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" tabindex="-1" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
+                                            <label class="visually-hidden" for="qty-single">Počet jednolůžkových pokojů</label>
+                                            <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
+                                               <span aria-hidden="true">-</span>
+                                               <span class="visually-hidden">Odebrat pokoj</span>
+                                            </button>
+                                            <input type="number" id="qty-single" min="0" max="16" value="0"  class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
+                                               <span aria-hidden="true">+</span>
+                                               <span class="visually-hidden">Přidat pokoj</span>
+                                            </button>
                                         </div>
                                     </div>
 
+                                    <div class="room-selection-item" id="room-double">
+                                        <div><span class="room-label">Dvoulůžkový pokoj:</span>
+                                            <span class="room-price-tag"></span></div>
+                                        <div class="qty-wrapper">
+                                            <label class="visually-hidden" for="qty-double">Počet dvoulůžkový pokojů</label>
+                                            <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
+                                               <span aria-hidden="true">-</span>
+                                               <span class="visually-hidden">Odebrat pokoj</span>
+                                            </button>
+                                            <input type="number" id="qty-double" min="0" max="16" value="0"  class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
+                                               <span aria-hidden="true">+</span>
+                                               <span class="visually-hidden">Přidat pokoj</span>
+                                            </button>
+                                        </div>
+                                    </div>   
+                                    
                                     <div class="room-selection-item" id="room-double-ac">
                                         <div><span class="room-label">Dvoulůžkový pokoj s klimatizací:</span><span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" tabindex="-1" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="4" value="0" aria-label="Počet dvoulůžkových pokojů s klimatizací" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" tabindex="-1" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
+                                            <label class="visually-hidden" for="qty-double-ac">Počet dvoulůžkový pokojů s klimatizací</label>
+                                            <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
+                                               <span aria-hidden="true">-</span>
+                                               <span class="visually-hidden">Odebrat pokoj</span>
+                                            </button>
+                                            <input type="number" id="qty-double-ac" min="0" max="4" value="0"  class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
+                                               <span aria-hidden="true">+</span>
+                                               <span class="visually-hidden">Přidat pokoj</span>
+                                            </button>
                                         </div>
-                                    </div>
-                                    
+                                    </div>         
+                                
                                     <div class="room-selection-item" id="room-apt-1">
-                                        <div><span class="room-label">Apartmá (1 os.):</span><span class="room-price-tag"></span></div>
+                                        <div><span class="room-label">Apartmá (1 os.):</span>
+                                            <span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" tabindex="-1" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="4" value="0" aria-label="Počet apartmá pro 1 osobu" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" tabindex="-1" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
+                                            <label class="visually-hidden" for="qty-apt-1">Počet apartmánů pro 1 osobu</label>
+                                            <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
+                                               <span aria-hidden="true">-</span>
+                                               <span class="visually-hidden">Odebrat pokoj</span>
+                                            </button>
+                                            <input type="number" id="qty-apt-1" min="0" max="4" value="0"  class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
+                                               <span aria-hidden="true">+</span>
+                                               <span class="visually-hidden">Přidat pokoj</span>
+                                            </button>
                                         </div>
-                                    </div>
-                                    
+                                    </div>    
                                     <div class="room-selection-item" id="room-apt-2">
                                         <div><span class="room-label">Apartmá (2 os.):</span><span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" tabindex="-1" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="4" value="0" aria-label="Počet apartmá pro 2 osoby" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" tabindex="-1" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
+                                            <label class="visually-hidden" for="qty-apt-2">Počet apartmánů pro 2 osoby</label>
+                                            <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
+                                               <span aria-hidden="true">-</span>
+                                               <span class="visually-hidden">Odebrat pokoj</span>
+                                            </button>
+                                            <input type="number" id="qty-apt-2" min="0" max="4" value="0"  class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
+                                               <span aria-hidden="true">+</span>
+                                               <span class="visually-hidden">Přidat pokoj</span>
+                                            </button>
                                         </div>
-                                    </div>
-                                    
+                                    </div>   
                                     <div class="room-selection-item" id="room-apt-3">
                                         <div><span class="room-label">Apartmá (3 os.):</span><span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
-                                            <button type="button" class="qty-btn minus" tabindex="-1" aria-label="Odebrat pokoj" title="Odebrat pokoj">-</button>
-                                            <input type="number" min="0" max="3" value="0" aria-label="Počet apartmá pro 3 osoby" class="form-control room-input room-qty">
-                                            <button type="button" class="qty-btn plus" tabindex="-1" aria-label="Přidat pokoj" title="Přidat pokoj">+</button>
+                                            <label class="visually-hidden" for="qty-apt-3">Počet apartmánů pro 3 osoby</label>
+                                            <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
+                                               <span aria-hidden="true">-</span>
+                                               <span class="visually-hidden">Odebrat pokoj</span>
+                                            </button>
+                                            <input type="number" id="qty-apt-3" min="0" max="3" value="0"  class="form-control room-input room-qty">
+                                            <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
+                                               <span aria-hidden="true">+</span>
+                                               <span class="visually-hidden">Přidat pokoj</span>
+                                            </button>
                                         </div>
-                                    </div>
-
+                                    </div>      
                                 </div>
                             </div>
 
