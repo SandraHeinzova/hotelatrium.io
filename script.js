@@ -266,7 +266,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const minusBtns = document.querySelectorAll('.qty-btn.minus');
     minusBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const input = e.target.nextElementSibling;
+            // Najdeme společný obal tlačítek a v něm přesný input
+            const wrapper = e.target.closest('.qty-wrapper');
+            if (!wrapper) return;
+            const input = wrapper.querySelector('.room-qty');
+            
             if (input) {
                 let val = parseInt(input.value) || 0;
                 if (val > 0) {
@@ -280,7 +284,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const plusBtns = document.querySelectorAll('.qty-btn.plus');
     plusBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const input = e.target.previousElementSibling;
+            // Najdeme společný obal tlačítek a v něm přesný input
+            const wrapper = e.target.closest('.qty-wrapper');
+            if (!wrapper) return;
+            const input = wrapper.querySelector('.room-qty');
+            
             if (input) {
                 let val = parseInt(input.value) || 0;
                 let max = parseInt(input.getAttribute('max')) || 99;
