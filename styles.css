@@ -5,6 +5,7 @@
     --color-primary: #3E2723;   /* Espresso */
     --color-accent: #A67C00;    /* Zlatavá */
     --color-bg-light: #FFFCF5;  /* Krémová */
+    --color-accent-text: #856400;
     --color-bg-white: #FFFFFF;
     --color-text-main: #2C2C2C;
     --color-text-light: #666666;
@@ -65,7 +66,7 @@ h1, h2, h3, h4 {
 }
 
 .section-tag {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     text-transform: uppercase;
     font-weight: 700;
     font-size: 0.85rem;
@@ -93,7 +94,7 @@ h1, h2, h3, h4 {
 .btn {
     display: inline-block;
     padding: 15px 35px;
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-text);
     color: white;
     text-decoration: none;
     font-weight: 700;
@@ -181,7 +182,7 @@ h1, h2, h3, h4 {
     cursor: pointer !important;
 }
 
-.nav-link:hover { color: var(--color-accent); }
+.nav-link:hover { color: var(--color-accent-text); }
 
 .btn-nav { width: auto; }
 
@@ -321,7 +322,7 @@ h1, h2, h3, h4 {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
 }
 
 .icon-circle svg { width: 24px; height: 24px; }
@@ -339,7 +340,7 @@ h1, h2, h3, h4 {
     padding: var(--spacing-section) 0;
 }
 
-.cafe-img-shadow { box-shadow: -20px 20px 0 var(--color-accent); }
+.cafe-img-shadow { box-shadow: -20px 20px 0 var(--color-accent-text); }
 .cafe-features-list { list-style: none; padding: 0; margin-bottom: 25px; }
 .cafe-list-item {
     margin-bottom: 10px;
@@ -428,7 +429,7 @@ h1, h2, h3, h4 {
 .tip-content h4 { margin: 0 0 10px 0; font-size: 1.2rem; color: var(--color-primary); }
 .tip-meta {
     font-size: 0.85rem;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 10px;
@@ -526,7 +527,7 @@ h1, h2, h3, h4 {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     font-weight: 700;
     display: block;
     margin-bottom: 8px;
@@ -557,7 +558,7 @@ h1, h2, h3, h4 {
     z-index: 10;
 }
 
-.slider-btn:hover { background-color: var(--color-accent); }
+.slider-btn:hover { background-color: var(--color-accent-text); }
 .slider-btn.prev { left: 10px; }
 .slider-btn.next { right: 10px; }
 .events-footer-action { text-align: center; margin-top: 40px; }
@@ -682,6 +683,14 @@ textarea.form-control { resize: vertical; min-height: 120px; }
     cursor: not-allowed !important;
 }
 
+.qty-btn.is-disabled,
+.qty-btn[aria-disabled="true"] {
+    background-color: #f4f1ea !important;
+    color: #ccc !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important; /* Tohle zakáže kliknutí myší! */
+}
+
 .room-input {
     width: 50px;
     text-align: center;
@@ -730,7 +739,7 @@ textarea.form-control { resize: vertical; min-height: 120px; }
     margin-top: -15px; 
     margin-bottom: 20px; 
     font-weight: 700; 
-    color: var(--color-accent); 
+    color: var(--color-accent-text); 
     min-height: 24px; 
     font-size: 1.1rem;
 }
@@ -837,9 +846,9 @@ footer h4 { margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; color: white;
     transition: color 0.3s;
 }
 
-.contact-row:hover { color: var(--color-accent); }
+.contact-row:hover { color: var(--color-accent-text); }
 .contact-row svg {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     flex-shrink: 0;
     margin-top: 4px;
 }
