@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hamburgerBtn && navMenu) {
         hamburgerBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            hamburgerBtn.classList.toggle('active');
+
+            const isExpanded = navMenu.classList.contains('active');
+            hamburgerBtn.setAttribute('aria-expanded', isExpanded);
         });
     }
 });
@@ -135,7 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (plusBtn) {
                 if (currentVal >= maxAttr || totalRooms >= 16 || (isApt && totalApartments >= 4) || (isDoubleAc && totalDoubleAc >= 4)) {
-                    plusBtn.disabled = true;
+                    plusBtn.setAttribute('aria-disabled', 'true');
+                    plusBtn.classList.add('is-disabled');
                     
                     if (currentVal >= maxAttr) {
                         plusBtn.title = "Dosaženo maximum pro tento typ pokoje";
@@ -147,7 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         plusBtn.title = "Dosažena kapacita pokojů s klimatizací (max 4)";
                     }
                 } else {
-                    plusBtn.disabled = false;
+                    plusBtn.setAttribute('aria-disabled', 'false');
+                    plusBtn.classList.remove('is-disabled');
                     plusBtn.title = "Přidat pokoj";
                 }
             }
@@ -290,9 +294,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const minusBtns = document.querySelectorAll('.qty-btn.minus');
+const minusBtns = document.querySelectorAll('.qty-btn.minus');
     minusBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
+            if (btn.getAttribute('aria-disabled') === 'true') return;
+
             const wrapper = e.target.closest('.qty-wrapper');
             if (!wrapper) return;
             const input = wrapper.querySelector('.room-qty');
@@ -310,6 +316,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const plusBtns = document.querySelectorAll('.qty-btn.plus');
     plusBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
+            if (btn.getAttribute('aria-disabled') === 'true') return;
+
             const wrapper = e.target.closest('.qty-wrapper');
             if (!wrapper) return;
             const input = wrapper.querySelector('.room-qty');
