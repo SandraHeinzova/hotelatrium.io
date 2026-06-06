@@ -9,14 +9,26 @@ const ROOM_PRICES = {
 };
 
 // === 2. GLOBÁLNÍ FUNKCE PRO MENU A AKCE (Dostupné pro oba HTML soubory) ===
-window.toggleMenu = function() {
-    const menu = document.querySelector('.nav-menu');
-    if (menu) menu.classList.toggle('active');
-}
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navMenu = document.querySelector('.nav-menu'); 
 
-window.scrollEvents = function(direction) {
+    if (hamburgerBtn && navMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+        });
+    }
+});
+
+// ==========================================================================
+// OVLÁDÁNÍ KARUSELU AKCÍ (Kalendář v index.html)
+// ==========================================================================
+
+function scrollEvents(direction) {
     const track = document.getElementById('eventsTrack');
-    if(!track) return;
+    if (!track) return;
 
     const itemWidth = 375; 
     const currentScroll = track.scrollLeft;
@@ -34,6 +46,21 @@ window.scrollEvents = function(direction) {
 
     track.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btnPrev = document.getElementById('btnEventsPrev');
+    const btnNext = document.getElementById('btnEventsNext');
+
+    if (btnPrev && btnNext) {
+        btnPrev.addEventListener('click', () => {
+            scrollEvents(-1);
+        });
+
+        btnNext.addEventListener('click', () => {
+            scrollEvents(1);
+        });
+    }
+});
 
 // === 3. LOGIKA REZERVAČNÍHO FORMULÁŘE A KALKULAČKY ===
 document.addEventListener('DOMContentLoaded', () => {
@@ -266,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const minusBtns = document.querySelectorAll('.qty-btn.minus');
     minusBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            // Najdeme společný obal tlačítek a v něm přesný input
             const wrapper = e.target.closest('.qty-wrapper');
             if (!wrapper) return;
             const input = wrapper.querySelector('.room-qty');
@@ -284,7 +310,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const plusBtns = document.querySelectorAll('.qty-btn.plus');
     plusBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            // Najdeme společný obal tlačítek a v něm přesný input
             const wrapper = e.target.closest('.qty-wrapper');
             if (!wrapper) return;
             const input = wrapper.querySelector('.room-qty');
