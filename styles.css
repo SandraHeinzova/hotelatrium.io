@@ -629,6 +629,7 @@ textarea.form-control { resize: vertical; min-height: 120px; }
     border-radius: 4px;
     overflow: hidden; 
     background-color: var(--color-bg-white);
+    flex-shrink: 0;
 }
 
 .qty-btn {
@@ -731,10 +732,27 @@ textarea.form-control { resize: vertical; min-height: 120px; }
     border-bottom: 1px dashed var(--color-border);
 }
 
-.room-selection-item:last-child { border-bottom: none; }
-.room-label { font-weight: 600; color: var(--color-primary); }
-.room-price-tag { font-size: 0.9rem; color: var(--color-text-light); margin-left: 5px; }
-.room-input { width: 80px; text-align: center; }
+.room-selection-item:last-child { 
+    border-bottom: none; 
+}
+
+.room-label { 
+    font-weight: 600; 
+    color: var(--color-primary); 
+}
+
+.room-price-tag {
+     font-size: 0.9rem; 
+     color: var(--color-text-light); 
+     margin-left: 5px; 
+     white-space: nowrap;
+     display: inline-block;
+    }
+
+.room-input { 
+    width: 80px;
+    text-align: center;
+}
 
 #nights-display {
     margin-top: -15px; 
@@ -906,26 +924,70 @@ footer h4 { margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; color: white;
         border-top: 1px solid #eee;
     }
     
-    .nav-menu.active { display: flex; }
-    .nav-link { display: block; padding: 10px; width: 100%; }
+    .nav-menu.active { 
+        display: flex; 
+    }
+
+    .nav-link { 
+        display: block; 
+        padding: 10px; 
+        width: 100%; 
+    }
     
     .split-layout, .features-grid, .booking-grid, .form-row, .tips-grid, .events-grid { 
         grid-template-columns: 1fr; 
         gap: 40px;
     }
 
-    .hero-content h1 { font-size: 2.2rem; }
-    .about-text h2, .page-header h1 { font-size: 2rem; }
-    #tips h2, .events-intro h2, .events-header h2 { font-size: 2rem; }
+    .hero-content h1 { 
+        font-size: 2.2rem;
+    }
 
-    .container { padding: 0 25px; }
-    .booking-form { padding: 30px 20px; }
+    .about-text h2, .page-header h1 { 
+        font-size: 2rem; 
+    }
+
+    #tips h2, .events-intro h2, .events-header h2 { 
+        font-size: 2rem; 
+    }
+
+    .container { 
+        padding: 0 25px; 
+    }
+
+    .booking-form { 
+        padding: 30px 20px; 
+    }
     
-    .room-selection-item { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .room-input { width: 100%; text-align: left; padding-left: 15px; }
+    .room-selection-item { 
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        padding: 15px 0;
+        gap: 10px; 
+    }
+
+    .room-price-tag {
+        display: block;
+        margin-left: 0;
+        margin-top: 2px;
+    }
+
+    .room-input { 
+        width: 50px; 
+        text-align: center; 
+        padding-left: 0; 
+    }
     
-    .event-card-item { min-width: 280px; }
-    .slider-btn { display: none; }
+    .event-card-item { 
+        min-width: 280px; 
+    }
+
+    .slider-btn { 
+        display: none; 
+    }
     
-    .sidebar-img { display: none; }
+    .sidebar-img { 
+        display: none; 
+    }
 }
