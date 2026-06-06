@@ -18,7 +18,7 @@
                 <a href="index.html"><img src="images/logo_hotel.png" alt="Hotel Atrium Logo"></a>
             </div>
 
-            <button type="button" class="hamburger" id="hamburgerBtn" title="Otevřít menu">
+            <button type="button" class="hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="navMenu" title="Otevřít menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3E2723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                 <span class="visually-hidden">Otevřít menu</span>
             </button>
@@ -39,7 +39,7 @@
             <picture>
                 <source type="image/webp" media="(max-width: 768px)" srcset="images/reservation_bg_mobile.webp">
                 <source type="image/webp" srcset="images/reservation_bg.webp">
-                <img src="images/reservation_bg.jpg" class="page-header-bg" alt="Pozadí rezervace">
+                <img src="images/reservation_bg.jpg" class="page-header-bg" alt="">
             </picture>           
             <div class="container page-header-content">
                 <h1>Rezervace ubytování</h1>
@@ -52,7 +52,7 @@
                 <div class="booking-grid">
                     <div class="booking-form">
                         <form action="#" method="POST" onsubmit="alert('Děkujeme! Poptávka byla odeslána.'); return false;">
-                            <h3 class="form-section-title">Termín pobytu</h3>
+                            <h2 class="form-section-title">Termín pobytu</h2>
                             <div class="form-row">
                                 <div class="form-group"><label for="checkin">Datum příjezdu</label><input type="date" id="checkin" class="form-control" required></div>
                                 <div class="form-group"><label for="checkout">Datum odjezdu</label><input type="date" id="checkout" class="form-control" required></div>
@@ -67,11 +67,12 @@
                                             <span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
                                             <label class="visually-hidden" for="qty-single">Počet jednolůžkových pokojů</label>
+                                            <span id="hint-single" class="visually-hidden">Hodnotu můžete měnit také šipkami nahoru a dolů.</span>            
                                             <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
                                                <span aria-hidden="true">-</span>
                                                <span class="visually-hidden">Odebrat pokoj</span>
                                             </button>
-                                            <input type="number" id="qty-single" min="0" max="16" value="0"  class="form-control room-input room-qty">
+                                            <input type="number" id="qty-single" min="0" max="16" value="0"  class="form-control room-input room-qty" aria-describedby="hint-single">
                                             <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
                                                <span aria-hidden="true">+</span>
                                                <span class="visually-hidden">Přidat pokoj</span>
@@ -84,11 +85,12 @@
                                             <span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
                                             <label class="visually-hidden" for="qty-double">Počet dvoulůžkový pokojů</label>
+                                            <span id="hint-double" class="visually-hidden">Hodnotu můžete měnit také šipkami nahoru a dolů.</span>            
                                             <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
                                                <span aria-hidden="true">-</span>
                                                <span class="visually-hidden">Odebrat pokoj</span>
                                             </button>
-                                            <input type="number" id="qty-double" min="0" max="16" value="0"  class="form-control room-input room-qty">
+                                            <input type="number" id="qty-double" min="0" max="16" value="0"  class="form-control room-input room-qty" aria-describedby="hint-double">
                                             <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
                                                <span aria-hidden="true">+</span>
                                                <span class="visually-hidden">Přidat pokoj</span>
@@ -100,11 +102,12 @@
                                         <div><span class="room-label">Dvoulůžkový pokoj s klimatizací:</span><span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
                                             <label class="visually-hidden" for="qty-double-ac">Počet dvoulůžkový pokojů s klimatizací</label>
+                                            <span id="hint-double-ac" class="visually-hidden">Hodnotu můžete měnit také šipkami nahoru a dolů.</span>            
                                             <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
                                                <span aria-hidden="true">-</span>
                                                <span class="visually-hidden">Odebrat pokoj</span>
                                             </button>
-                                            <input type="number" id="qty-double-ac" min="0" max="4" value="0"  class="form-control room-input room-qty">
+                                            <input type="number" id="qty-double-ac" min="0" max="4" value="0"  class="form-control room-input room-qty" aria-describedby="hint-double-ac">
                                             <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
                                                <span aria-hidden="true">+</span>
                                                <span class="visually-hidden">Přidat pokoj</span>
@@ -117,11 +120,12 @@
                                             <span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
                                             <label class="visually-hidden" for="qty-apt-1">Počet apartmánů pro 1 osobu</label>
+                                            <span id="hint-apt-1" class="visually-hidden">Hodnotu můžete měnit také šipkami nahoru a dolů.</span>            
                                             <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
                                                <span aria-hidden="true">-</span>
                                                <span class="visually-hidden">Odebrat pokoj</span>
                                             </button>
-                                            <input type="number" id="qty-apt-1" min="0" max="4" value="0"  class="form-control room-input room-qty">
+                                            <input type="number" id="qty-apt-1" min="0" max="4" value="0"  class="form-control room-input room-qty" aria-describedby="hint-apt-1">
                                             <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
                                                <span aria-hidden="true">+</span>
                                                <span class="visually-hidden">Přidat pokoj</span>
@@ -132,11 +136,12 @@
                                         <div><span class="room-label">Apartmá (2 os.):</span><span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
                                             <label class="visually-hidden" for="qty-apt-2">Počet apartmánů pro 2 osoby</label>
+                                            <span id="hint-apt-2" class="visually-hidden">Hodnotu můžete měnit také šipkami nahoru a dolů.</span>            
                                             <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
                                                <span aria-hidden="true">-</span>
                                                <span class="visually-hidden">Odebrat pokoj</span>
                                             </button>
-                                            <input type="number" id="qty-apt-2" min="0" max="4" value="0"  class="form-control room-input room-qty">
+                                            <input type="number" id="qty-apt-2" min="0" max="4" value="0"  class="form-control room-input room-qty" aria-describedby="hint-apt-2">
                                             <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
                                                <span aria-hidden="true">+</span>
                                                <span class="visually-hidden">Přidat pokoj</span>
@@ -147,11 +152,12 @@
                                         <div><span class="room-label">Apartmá (3 os.):</span><span class="room-price-tag"></span></div>
                                         <div class="qty-wrapper">
                                             <label class="visually-hidden" for="qty-apt-3">Počet apartmánů pro 3 osoby</label>
+                                            <span id="hint-apt-3" class="visually-hidden">Hodnotu můžete měnit také šipkami nahoru a dolů.</span>
                                             <button type="button" class="qty-btn minus" tabindex="-1" title="Odebrat pokoj">
                                                <span aria-hidden="true">-</span>
                                                <span class="visually-hidden">Odebrat pokoj</span>
                                             </button>
-                                            <input type="number" id="qty-apt-3" min="0" max="3" value="0"  class="form-control room-input room-qty">
+                                            <input type="number" id="qty-apt-3" min="0" max="3" value="0"  class="form-control room-input room-qty" aria-describedby="hint-apt-3">
                                             <button type="button" class="qty-btn plus" tabindex="-1" title="Přidat pokoj">
                                                <span aria-hidden="true">+</span>
                                                <span class="visually-hidden">Přidat pokoj</span>
@@ -161,10 +167,10 @@
                                 </div>
                             </div>
 
-                            <div id="room-capacity-warning" class="hidden"></div>
-                            <div id="total-price-display"></div>
+                            <div id="room-capacity-warning" class="hidden" role="alert"></div>
+                            <div id="total-price-display" aria-live="polite"></div>
 
-                            <h3 class="form-section-title contact-title-mt">Kontaktní údaje</h3>
+                            <h2 class="form-section-title contact-title-mt">Kontaktní údaje</h2>
                             <div class="form-row">
                                 <div class="form-group"><label for="company">Firma (nepovinné)</label><input type="text" id="company" class="form-control" placeholder="Název firmy"></div>
                                 <div class="form-group"><label for="ico">IČO (nepovinné)</label><input type="text" id="ico" class="form-control" placeholder="12345678"></div>
@@ -175,7 +181,7 @@
                             </div>
                             <div class="form-group"><label for="email">E-mail</label><input type="email" id="email" class="form-control" placeholder="jan.novak@email.cz" required></div>
                             <div class="form-group"><label for="note">Poznámka / Speciální přání</label><textarea id="note" class="form-control" placeholder="Potřebujete dětskou postýlku, rádi byste balkón nebo máte dietní omezení? Napište nám."></textarea></div>
-                            <button type="submit" title="Odeslat rezervační formulář" class="btn btn-submit-form">Odeslat nezávaznou poptávku</button>
+                            <button type="submit" class="btn btn-submit-form">Odeslat nezávaznou poptávku</button>
                             <p class="form-consent-text">Odesláním formuláře souhlasíte se zpracováním osobních údajů.</p>
                         </form>
                     </div>
