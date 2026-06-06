@@ -14,13 +14,14 @@
 <body>
     <nav class="navbar">
         <div class="container nav-inner">
-            <div class="logo" onclick="switchView('home')">
+            <a class="logo" href="index.html">
                 <img src="images/logo_hotel.png" alt="Hotel Atrium Logo">
-            </div>
+            </a>
 
-            <div class="hamburger" onclick="toggleMenu()">
+            <button type="button" class="hamburger" id="hamburgerBtn" title="Otevřít menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3E2723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            </div>
+                <span class="visually-hidden">Otevřít menu</span>
+            </button>
 
             <div class="nav-menu">
                 <a href="#about" class="nav-link">O hotelu</a>
@@ -38,7 +39,7 @@
         <header class="hero">
             <div class="hero-overlay"></div>
             <picture>
-                <source type="image/webp" media="(max-width: 768px)" srcset="images/hotel_cafe-mobile.webp">
+                <source type="image/webp" media="(max-width: 768px)" srcset="images/hotel_cafe_mobile.webp">
                 
                 <source type="image/webp" srcset="images/hotel_cafe.webp">
                 
@@ -60,7 +61,7 @@
                         <h2>Vítejte u nás doma</h2>
                         <p>Jsme rodinný hotel, kde si zakládáme na osobním přístupu a hřejivé atmosféře. Děláme maximum pro to, abyste se u nás cítili jako v bavlnce.</p>
                         <p>Ať už cestujete za obchodem, nebo s rodinou, u nás najdete ten správný prostor pro odpočinek. K dispozici máme 16 pečlivě zařízených pokojů – od praktického jednolůžka přes komfortní dvoulůžkové pokoje (ve druhém patře i s klimatizací) až po prostorné apartmány, kam se pohodlně vejdou až tři dospělí.</p>
-                        <button type="button" onclick="switchView('home', 'rooms')" class="btn-outline">Více o hotelu</button>
+                        <a href="#rooms" class="btn">Více o hotelu</a>
                     </div>
                     <div class="about-img">
                         <picture>                        
@@ -156,103 +157,93 @@
 
                 <h3 class="tips-category-title">Kam na večeři</h3>
                 <div class="tips-grid">
-                    <a href="https://www.nejendvorek.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
-                        <div class="tip-card">
-                            <picture>                        
-                                <source type="image/webp" srcset="images/nejen_dvorek.webp">
+                    <div class="tip-card">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/nejen_dvorek.webp">
                             
-                                <img src="images/nejen_dvorek.jpeg" alt="Nejen Dvorek" class="tip-img">
-                            </picture>
+                            <img src="images/nejen_dvorek.jpeg" alt="Nejen Dvorek" class="tip-img">
+                        </picture>
 
-                            <div class="tip-content">
-                                <span class="tip-meta">5 min chůze • Moderní</span>
-                                <h4>Nejen Dvorek</h4>
-                                <p>Moderní bistro s úžasnou atmosférou a zahrádkou ve vnitrobloku. Zaměřují se na sezónní suroviny a netradiční kombinace chutí.</p>
-                            </div>
+                        <div class="tip-content">
+                            <span class="tip-meta">5 min chůze • Moderní</span>
+                            <h4><a href="https://www.nejendvorek.cz/" target="_blank" rel="noopener noreferrer">Nejen Dvorek</a></h4>
+                            <p>Moderní bistro s úžasnou atmosférou a zahrádkou ve vnitrobloku. Zaměřují se na sezónní suroviny a netradiční kombinace chutí.</p>
                         </div>
-                    </a>
+                    </div>
                     
-                    <a href="https://www.plzenkapardubice.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
-                        <div class="tip-card">
-                            <picture>                        
-                                <source type="image/webp" srcset="images/plzenka.webp">
+                    <div class="tip-card">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/plzenka.webp">
                             
-                                <img src="images/plzenka.jpeg" alt="Plzeňka - české jídlo" class="tip-img">
-                            </picture>
+                            <img src="images/plzenka.jpeg" alt="Plzeňka - české jídlo" class="tip-img">
+                        </picture>
                             
-                            <div class="tip-content">
-                                <span class="tip-meta">1 min chůze • Česká kuchyně</span>
-                                <h4>Plzeňka</h4>
-                                <p>Poctivá česká klasika a tanková Plzeň. Pokud máte chuť na výbornou svíčkovou, guláš nebo konfitovanou kachnu, tady nešlápnete vedle.</p>
-                            </div>
+                        <div class="tip-content">
+                            <span class="tip-meta">1 min chůze • Česká </span>
+                            <h4><a href="https://www.plzenkapardubice.cz/" target="_blank" rel="noopener noreferrer">Plzeňka</a></h4>
+                            <p>Poctivá česká klasika a tanková Plzeň. Pokud máte chuť na výbornou svíčkovou, guláš nebo konfitovanou kachnu, tady nešlápnete vedle.</p>
                         </div>
-                    </a>
-
-                    <a href="https://www.stpatrick.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
-                        <div class="tip-card">
-                            <picture>                        
-                                <source type="image/webp" srcset="images/st_patricks.webp">
+                    </div>
+                    
+                    <div class="tip-card">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/st_patricks.webp">
                             
-                                <img src="images/st_patricks.jpeg" alt="Burger v St. Patrick Irish Pub" class="tip-img">                     
-                            </picture>
+                            <img src="images/st_patricks.jpeg" alt="Burger v St. Patrick Irish Pub" class="tip-img">                     
+                        </picture>
                             
-                            <div class="tip-content">                            
-                                <span class="tip-meta">10 min chůze • Irská</span>
-                                <h4>St. Patrick Irish Pub</h4>
-                                <p>Kousek Irska v Pardubicích. Skvělé burgery, grilovaná žebra a samozřejmě čepovaný Guinness. Ideální místo pro uvolněný večer.</p>
-                            </div>
+                        <div class="tip-content">                            
+                            <span class="tip-meta">10 min chůze • Irská</span>
+                            <h4><a href="https://www.stpatrick.cz/" target="_blank" rel="noopener noreferrer">St. Patrick Irish Pub</a></h4>
+                            <p>Kousek Irska v Pardubicích. Skvělé burgery, grilovaná žebra a samozřejmě čepovaný Guinness. Ideální místo pro uvolněný večer.</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <h3 class="tips-category-title">Co musíte vidět</h3>
                 <div class="tips-grid">
-                    <a href="https://www.vcm.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
-                        <div class="tip-card">
-                            <picture>                        
-                                <source type="image/webp" srcset="images/zamek.webp">
-                            
-                                <img src="images/zamek.jpeg" alt="Zámek" class="tip-img">                                  
-                            </picture>
+                    <div class="tip-card">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/zamek.webp">
+                        
+                            <img src="images/zamek.jpeg" alt="Zámek" class="tip-img">                                  
+                        </picture>
 
-                            <div class="tip-content">
-                                <span class="tip-meta">5 min chůze • Historie</span>
-                                <h4>Zámek Pardubice</h4>
-                                <p>Renesanční zámek s unikátními hradbami a pávy volně se procházejícími po nádvoří. Uvnitř najdete Východočeské muzeum.</p>
-                            </div>
+                        <div class="tip-content">
+                            <span class="tip-meta">5 min chůze • Historie</span>
+                            <h4><a href="https://www.vcm.cz/" target="_blank" rel="noopener noreferrer">Zámek Pardubice</a></h4>
+                            <p>Renesanční zámek s unikátními hradbami a pávy volně se procházejícími po nádvoří. Uvnitř najdete Východočeské muzeum.</p>
                         </div>
-                    </a>
+                    </div>
+                  
 
-                    <a href="https://www.zelenabrana.eu/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
-                        <div class="tip-card">
-                            <picture>                        
-                                <source type="image/webp" srcset="images/zelena_brana.webp">
+                    <div class="tip-card">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/zelena_brana.webp">
                             
-                                <img src="images/zelena_brana.jpeg" alt="Zelená brána" class="tip-img">
-                            </picture>
+                            <img src="images/zelena_brana.jpeg" alt="Zelená brána" class="tip-img">
+                        </picture>
 
-                            <div class="tip-content">
-                                <span class="tip-meta">3 min chůze • Vyhlídka</span>
-                                <h4>Zelená brána</h4>
-                                <p>Dominanta města. Vystoupejte na věž a užijte si výhled na celé historické centrum a Pernštýnské náměstí.</p>
-                            </div>
+                        <div class="tip-content">
+                            <span class="tip-meta">3 min chůze • Vyhlídka</span>
+                            <h4><a href="https://www.zelenabrana.eu/" target="_blank" rel="noopener noreferrer">Zelená brána</a></h4>
+                            <p>Dominanta města. Vystoupejte na věž a užijte si výhled na celé historické centrum a Pernštýnské náměstí.</p>
                         </div>
-                    </a>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <picture>                        
+                            <source type="image/webp" srcset="images/kuneticka_hora.webp">
+                        
+                            <img src="images/kuneticka_hora.jpeg" alt="Kunětická hora" class="tip-img">
+                        </picture>
 
-                    <a href="https://hrad-kunetickahora.cz/" target="_blank" rel="noopener noreferrer" class="tip-card-link">
-                        <div class="tip-card">
-                            <picture>                        
-                                <source type="image/webp" srcset="images/kuneticka_hora.webp">
-                            
-                                <img src="images/kuneticka_hora.jpeg" alt="Kunětická hora" class="tip-img">
-                            </picture>
-
-                            <div class="tip-content">
-                                <span class="tip-meta">15 min autem • Výlet</span>
-                                <h4>Hrad Kunětická hora</h4>
-                                <p>Kultovní hrad na kopci nedaleko města, známý ze seriálu Arabela. Skvělý tip na odpolední výlet.</p>
-                            </div>
+                        <div class="tip-content">
+                            <span class="tip-meta">15 min autem • Výlet</span>
+                            <h4><a href="https://hrad-kunetickahora.cz/" target="_blank" rel="noopener noreferrer">Hrad Kunětická hora</a></h4>
+                            <p>Kultovní hrad na kopci nedaleko města, známý ze seriálu Arabela. Skvělý tip na odpolední výlet.</p>
                         </div>
-                    </a>
+                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -265,56 +256,51 @@
             </div>
 
             <div class="carousel-wrapper">
-                <button type="button" title="Posunout na předchozí akci" class="slider-btn prev" onclick="scrollEvents(-1)">
+                <button type="button" id="btnEventsPrev" title="Posunout na předchozí akci" class="slider-btn prev" onclick="scrollEvents(-1)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
                 </button>
 
                 <div class="carousel-track" id="eventsTrack">
                     
-                <a href="https://zavodistepardubice.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
                     <div class="event-card-item">
                         <picture>                        
                             <source type="image/webp" srcset="images/velka_pardubicka.webp">
                             
                             <img src="images/velka_pardubicka.jpeg" class="event-img" alt="Velká Pardubická">
                         </picture>
-
                         <div class="event-body">
                             <span class="event-date-tag">Říjen</span>
-                            <h3 class="event-title">Velká pardubická</h3>
+                            <h3 class="event-title"><a href="https://zavodistepardubice.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">Velká pardubická</a></h3>
                             <p>Nejstarší a nejtěžší dostih v kontinentální Evropě. Společenský vrchol sezóny.</p>
                         </div>
                     </div>
-                </a>
-                <a href="https://www.zlataprilba.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    
                     <div class="event-card-item">
                         <picture>                        
                             <source type="image/webp" srcset="images/zlata_prilba.webp">
-                            
+                                
                             <img src="images/zlata_prilba.jpeg" class="event-img" alt="Plochá dráha">
                         </picture>                        
                         <div class="event-body">
                             <span class="event-date-tag">Září / Říjen</span>
-                            <h3 class="event-title">Zlatá přilba</h3>
+                            <h3 class="event-title"><a href="https://www.zlataprilba.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">Zlatá přilba</a></h3>
                             <p>Nejstarší plochodrážní závod na světě. Adrenalin, vůně metylu a bouřlivá atmosféra.</p>
                         </div>
                     </div>
-                </a>
-                <a href="https://aviatickapout.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    
                     <div class="event-card-item">
                         <picture>                        
                             <source type="image/webp" srcset="images/aviaticka_pout.webp">
-                            
+                                
                             <img src="images/aviaticka_pout.jpeg" class="event-img" alt="Aviatická pouť">
                         </picture>                         
                         <div class="event-body">
                             <span class="event-date-tag">Červen</span>
-                            <h3 class="event-title">Aviatická pouť</h3>
+                            <h3 class="event-title"><a href="https://aviatickapout.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">Aviatická pouť</a></h3>
                             <p>Unikátní letecká show na pardubickém letišti. Historická letadla i moderní stíhačky.</p>
                         </div>
                     </div>
-                </a>
-                <a href="https://www.hcdynamo.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    
                     <div class="event-card-item">
                         <picture>                        
                             <source type="image/webp" srcset="images/ice_hockey.webp">
@@ -324,43 +310,39 @@
 
                         <div class="event-body">
                             <span class="event-date-tag">Září – Duben</span>
-                            <h3 class="event-title">HC Dynamo Pardubice</h3>
+                            <h3 class="event-title"><a href="https://www.hcdynamo.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">HC Dynamo Pardubice</a></h3>
                             <p>Zažijte atmosféru v enteria areně. Jsme hokejové město!</p>
                         </div>
                     </div>
-                </a>
-                <a href="https://www.folklornifestival.cz/cs/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    
                     <div class="event-card-item">
                         <picture>                        
                             <source type="image/webp" srcset="images/perstynska.webp">
-                            
+                                
                             <img src="images/perstynska.jpeg" class="event-img" alt="Pernštýnská noc">
                         </picture>                        
                         <div class="event-body">
                             <span class="event-date-tag">Červen</span>
-                            <h3 class="event-title">Pernštýnská noc</h3>
+                            <h3 class="event-title"><a href="https://www.folklornifestival.cz/cs/" target="_blank" rel="noopener noreferrer" class="event-card-link">Pernštýnská noc</a></h3>
                             <p>Městské slavnosti plné hudby, trhů, řemesel a ohňostrojů v historickém centru.</p>
                         </div>
                     </div>
-                </a>
-                <a href="https://www.vcd.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">
+                    
                     <div class="event-card-item">
                         <picture>                        
                             <source type="image/webp" srcset="images/divadlo.webp">
-                            
+                                
                             <img src="images/divadlo.jpeg" class="event-img" alt="Východočeské divadlo">
                         </picture>                           
                         <div class="event-body">
                             <span class="event-date-tag">Celoročně</span>
-                            <h3 class="event-title">Východočeské divadlo</h3>
+                            <h3 class="event-title"><a href="https://www.vcd.cz/" target="_blank" rel="noopener noreferrer" class="event-card-link">Východočeské divadlo</a></h3>
                             <p>Nádherná secesní budova a bohatý program od činohry po muzikály.</p>
                         </div>
                     </div>
-                </a>
-
                 </div>
 
-                <button type="button" title="Posunout na další akci" class="slider-btn next" onclick="scrollEvents(1)">
+                <button type="button" id="btnEventsNext" title="Posunout na další akci" class="slider-btn next">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </button>
             </div>
@@ -376,9 +358,10 @@
             <div class="footer-grid">
                 
                 <div>
-                    <div class="logo footer-logo" onclick="switchView('home')">
-                         <img src="images/logo_hotel.png" alt="Hotel Atrium">
-                    </div>
+                    <a href="index.html" class="logo footer-logo">                         
+                        <img src="images/logo_hotel.png" alt="Hotel Atrium">
+                    </a>
+
                     <p class="footer-motto">Váš druhý domov v Pardubicích.<br>Rodinný hotel s tradicí a srdcem.</p>
                 </div>
                 
