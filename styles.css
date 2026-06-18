@@ -1063,15 +1063,11 @@ footer h4 { margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; color: white;
 /* =========================================
    MOBILNÍ ZOBRAZENÍ (Responzivita)
    ========================================= */
-@media (max-width: 900px) {
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-}
 
-@media (max-width: 768px) {
-    .hamburger { display: block; }
+@media (max-width: 980px) {
+    .hamburger { 
+        display: block; 
+    }
     
     .nav-menu {
         display: none;
@@ -1097,7 +1093,16 @@ footer h4 { margin-top: 0; margin-bottom: 20px; font-size: 1.2rem; color: white;
         padding: 10px; 
         width: 100%; 
     }
-    
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+}
+
+@media (max-width: 768px) {
     .split-layout, .features-grid, .booking-grid, .form-row, .tips-grid, .events-grid { 
         grid-template-columns: 1fr; 
         gap: 40px;
