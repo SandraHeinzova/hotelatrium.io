@@ -392,6 +392,23 @@ h1, h2, h3, h4 {
     gap: 10px;
 }
 
+.cafe-list-item.hours-item {
+    align-items: flex-start; 
+}
+
+.hours-item svg {
+    margin-top: 5px; 
+    flex-shrink: 0;
+}
+
+.hours-grid {
+    display: grid;
+    grid-template-columns: 65px 1fr; 
+    column-gap: 15px;
+    margin-top: 5px;
+    color: var(--color-text-light); 
+}
+
 /* =========================================
    SEKCE TIPY NA VÝLETY (Karty)
    ========================================= */
