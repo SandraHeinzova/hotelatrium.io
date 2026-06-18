@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prohlédněte si fotogalerii rodinného Hotelu Atrium v Pardubicích. Nahlédněte do našich pokojů, kavárny i útulného dvora.">
+    <title>Fotogalerie | Hotel Atrium Pardubice</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="%233E2723" stroke-width="3"/><text x="50" y="70" font-family="Didot, serif" font-size="55" fill="%233E2723" text-anchor="middle" font-weight="bold">A</text></svg>'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo_hotel.png" alt="Hotel Atrium Logo"></a>
+            </div>
+
+            <button type="button" class="hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="navMenu" title="Otevřít menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3E2723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                <span class="visually-hidden">Otevřít menu</span>
+            </button>
+
+            <div class="nav-menu">
+                <a href="index.html#about" class="nav-link">O hotelu</a>
+                <a href="index.html#rooms" class="nav-link">Pokoje</a>
+                <a href="index.html#cafe" class="nav-link">Kavárna</a>
+                <a href="index.html#tips" class="nav-link">Naše tipy</a>
+                <a href="index.html#contact" class="nav-link">Kontakt</a>
+                <a href="reservation.html" class="btn btn-nav">Rezervovat</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="view-gallery" class="view-section">
+        <header class="page-header">
+            <picture>
+                <source type="image/webp" media="(max-width: 768px)" srcset="images/reservation_bg_mobile.webp">
+                <source type="image/webp" srcset="images/reservation_bg.webp">
+                <img src="images/reservation_bg.jpg" class="page-header-bg" alt="">
+            </picture>           
+            <div class="container page-header-content">
+                <h1>Naše fotogalerie</h1>
+                <p>Nahlédněte k nám ještě před Vaším příjezdem</p>
+            </div>
+        </header>
+
+        <section class="gallery-page-section">
+            <div class="container">
+                <div class="gallery-main-grid">
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_1.webp">
+                        <img src="img-gallery/gallery_1.jpg" alt="Host pracující na notebooku u šálku kávy v kavárně Atrium" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_2.webp">
+                        <img src="img-gallery/gallery_2.jpg" alt="Barový pult kavárny Atrium s obsluhovaným hostem" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_3.webp">
+                        <img src="img-gallery/gallery_3.jpg" alt="Posezení v kavárně s lavicí a zarámovanými fotografiemi na zdi" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_4.webp">
+                        <img src="img-gallery/gallery_4.jpg" alt="Šálek kávy na stole v kavárně Atrium" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_5.webp">
+                        <img src="img-gallery/gallery_5.jpg" alt="Osvětlený bar s nabídkou nápojů a nápisem Atrium Café" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_6.webp">
+                        <img src="img-gallery/gallery_6.jpg" alt="Kout s křesílky a menší knihovnou v kavárně" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_7.webp">
+                        <img src="img-gallery/gallery_7.jpg" alt="Osvětlení nad barovým pultem kavárny Atrium" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_8.webp">
+                        <img src="img-gallery/gallery_8.jpg" alt="Interiér kavárny s posezením pro hosty" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_9.webp">
+                        <img src="img-gallery/gallery_9.jpg" alt="Hlavní vchod do Hotelu Atrium z ulice s červeným nápisem" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_10.webp">
+                        <img src="img-gallery/gallery_10.jpg" alt="Parkování pro hosty v uzavřeném vnitrobloku hotelu" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_11.webp">
+                        <img src="img-gallery/gallery_11.jpg" alt="Dvoulůžkový pokoj s oddělenými postelemi a vzorovanou tapetou" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_12.webp">
+                        <img src="img-gallery/gallery_12.jpg" alt="Hotelová koupelna s umyvadlem a zrcadlem ve stříbrném zdobeném rámu" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_13.webp">
+                        <img src="img-gallery/gallery_13.jpg" alt="Kulaté umyvadlo s bílými ručníky v hotelové koupelně" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_14.webp">
+                        <img src="img-gallery/gallery_14.jpg" alt="Zdobené zrcadlo v hotelové koupelně" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_15.webp">
+                        <img src="img-gallery/gallery_15.jpg" alt="Sprchový kout obložený světlými dlaždicemi" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_16.webp">
+                        <img src="img-gallery/gallery_16.jpg" alt="Dvoulůžkový pokoj s oddělenými lůžky a menší pohovkou" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_17.webp">
+                        <img src="img-gallery/gallery_17.jpg" alt="Pracovní stůl s televizí a výhledem z oken pokoje" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_18.webp">
+                        <img src="img-gallery/gallery_18.jpg" alt="Ustlané postele s modrými polštáři a informačními deskami hotelu" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_19.webp">
+                        <img src="img-gallery/gallery_19.jpg" alt="Manželská postel se světlými lůžkovinami a zlatými polštáři" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_20.webp">
+                        <img src="img-gallery/gallery_20.jpg" alt="Zlatý flitrovaný polštář na hotelové posteli" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_21.webp">
+                        <img src="img-gallery/gallery_21.jpg" alt="Výhled shora na vnitřní dvůr s parkovacími místy pro hosty" class="gallery-page-img">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" srcset="img-gallery/gallery_22.webp">
+                        <img src="img-gallery/gallery_22.jpg" alt="Kout s postelí, nočním stolkem a lampičkou v pokoji" class="gallery-page-img">
+                    </picture>                                        
+                </div>
+                
+                <div class="gallery-back-action">
+                    <a href="index.html" class="btn">Zpět na hlavní stránku</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="bottom-bar">
+                © 2026 Hotel Atrium Pardubice. Všechna práva vyhrazena.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <button class="nav-btn prev-btn" aria-label="Předchozí">&#10094;</button>
+        <img id="lightbox-img" src="" alt="Zvětšený náhled">
+        <button class="nav-btn next-btn" aria-label="Další">&#10095;</button>
+    </div>
+</body>
+</html>

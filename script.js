@@ -333,3 +333,59 @@ const minusBtns = document.querySelectorAll('.qty-btn.minus');
         });
     });
 });
+
+// === LIGHTBOX LOGIKA ===
+document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const images = document.querySelectorAll('.gallery-page-img');
+    const closeBtn = document.querySelector('.close-lightbox');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    // BEZPEČNOSTNÍ POJISTKA: Skript se spustí jen tehdy, když je na stránce galerie
+    if (!lightbox || images.length === 0) return;
+
+    let currentIndex = 0;
+
+    const showImage = (index) => {
+        if (index < 0) index = images.length - 1;
+        if (index >= images.length) index = 0;
+        currentIndex = index;
+        
+        lbImg.src = images[index].src;
+        // Místo display = 'flex' teď přidáváme třídu pro plynulou CSS animaci
+        lightbox.classList.add('active'); 
+        document.body.style.overflow = 'hidden'; // Vypne scrollování pozadí
+    };
+
+    const hideLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Zapne scrollování pozadí
+    };
+
+    // Kliknutí na fotku
+    images.forEach((img, index) => {
+        img.addEventListener('click', () => showImage(index));
+    });
+
+    // Zavírání
+    closeBtn.addEventListener('click', hideLightbox);
+    lightbox.addEventListener('click', (e) => {
+        // Zavře jen pokud se kliklo na pozadí, ne přímo na fotku nebo šipku
+        if (e.target === lightbox) hideLightbox();
+    });
+
+    // Posouvání šipkami (zastaví se propagace, aby se okno nezavřelo)
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex - 1); });
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex + 1); });
+
+    // Ovládání klávesnicí
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+            if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+            if (e.key === 'Escape') hideLightbox();
+        }
+    });
+});
