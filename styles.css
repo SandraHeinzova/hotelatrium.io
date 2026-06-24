@@ -409,6 +409,12 @@ h1, h2, h3, h4 {
     color: var(--color-text-light); 
 }
 
+.opening-hours-change {
+    display: block; 
+    margin-top: 0.5rem; 
+    opacity: 0.8;
+}
+
 /* =========================================
    SEKCE TIPY NA VÝLETY (Karty)
    ========================================= */
@@ -658,6 +664,13 @@ h1, h2, h3, h4 {
     color: var(--color-text-light);
     margin-bottom: 10px;
     letter-spacing: 0.5px;
+}
+
+.pricing-change {
+    font-size: 0.85rem; 
+    color: #666;
+    margin-top: -10px; 
+    font-style: italic;
 }
 
 .form-control {
